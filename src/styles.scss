@@ -1,0 +1,69 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700,900|Rubik:300,400,500,700");
+@import "./styles/_vars.scss";
+@import "./styles/_bootstrap-update.scss";
+@import "./styles/_theme.scss";
+@import "./styles/_buttons.scss";
+@import "./styles/_modal.scss";
+@import "./styles/_screen-login.scss";
+@import "./styles/_create-account.scss";
+@import "./styles/_my-applies.scss";
+@import "./styles/_offer-filters.scss";
+@import "./styles/tables.scss";
+@import "./styles/_timeline.scss";
+
+.line {
+  overflow: hidden;
+  text-align: center;
+
+  &:after,
+  &:before {
+    background-color: #ccc;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+  }
+
+  &:before {
+    right: 0.5em;
+    margin-left: -50%;
+  }
+
+  &:after {
+    left: 0.5em;
+    margin-right: -50%;
+  }
+}
+
+.ng-valid.required,
+.ng-valid[required] {
+  border-left: 5px solid #42A948;
+  /* green */
+}
+
+input.form-control.ng-touched.ng-invalid {
+  border-left: 5px solid #a94442;
+  /* red */
+}
+
+textarea.form-control.ng-touched.ng-invalid {
+  border-left: 5px solid #a94442;
+  /* red */
+}
+
+.help-block {
+  margin-bottom: 0;
+}
+
+.blanco {
+  color: white;
+}
+
+
+

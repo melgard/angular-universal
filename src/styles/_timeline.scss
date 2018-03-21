@@ -1,0 +1,164 @@
+#timeline {
+  .create {
+    margin-top: 20px;
+    padding: 1px 20px;
+    overflow: auto;
+    .create-post {
+      padding: 0;
+      display: inline-block;
+      li {
+        list-style: none;
+        display: inline-block;
+        margin-right: 10px;
+        span {
+          width: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 30px;
+          border-radius: 50%;
+          border: 1px solid #dcdcdc;
+          font-size: 20px;
+          background: white;
+        }
+      }
+    }
+
+    textarea {
+      margin: 10px 0 10px 0;
+      font-size: 16px;
+      font-weight: 300;
+      padding: 15px;
+    }
+
+    .form-group {
+      margin: 0;
+    }
+
+    .post {
+      float: right;
+    }
+  }
+
+  article {
+    .why {
+      color: #aaa;
+      font-weight: 300;
+      text-transform: uppercase;
+      display: block;
+      text-align: left;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.recomendados-amigos {
+  display: flex;
+  article {
+    margin-right: 20px;
+    min-width: 172px;
+  }
+}
+
+.skills {
+  span {
+    border: 1px solid #aeaeae;
+    padding: 8px;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+  }
+  .s1 {
+    font-size: 22px;
+  }
+  .s2 {
+    font-size: 18px;
+  }
+}
+
+.comments {
+  .comment-data {
+    display: flex;
+    .img {
+      flex: 1;
+      img {
+        width: 100%;
+      }
+    }
+
+    .nombre {
+      flex: 10;
+      padding: 0 10px;
+      h5 {
+        margin: 2px 0;
+      }
+
+      small {
+        color: #aaa;
+        margin-bottom: 10px;
+        display: block;
+      }
+    }
+
+    .actions {
+      small {
+        display: inline-block;
+        color: $main-color;
+      }
+    }
+  }
+}
+
+.notification {
+  margin-bottom: 30px;
+}
+
+.crear-anuncio {
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+/* MURO */
+
+.menu-lateral {
+  padding: 0;
+  list-style: none;
+  li {
+    margin: 10px 0;
+    padding: 5px;
+    &.selected {
+      border: 1px solid #d4d4d4;
+      background: rgba(255, 255, 255, 0.5);
+    }
+  }
+}
+
+#review {
+  .review {
+    margin-bottom: 30px;
+    display: flex;
+    div {
+      flex: 1;
+    }
+    .foto {
+      max-width: 80px;
+      margin-right: 20px;
+    }
+
+    h5 {
+      display: inline-block;
+    }
+    .estrellas {
+      padding: 0;
+      list-style: none;
+      display: inline-block;
+      margin-left: 10px;
+      li {
+        color: gold;
+        font-size: 15px;
+        display: inline;
+      }
+    }
+  }
+}

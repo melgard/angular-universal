@@ -1,0 +1,19 @@
+#new-offer {
+  .tipo-anuncios {
+    ul {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+  }
+
+  .comprar-creditos {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    h4, h2 {
+      margin: 0;
+    }
+  }
+}

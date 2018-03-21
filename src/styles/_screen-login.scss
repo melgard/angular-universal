@@ -1,0 +1,59 @@
+body,
+html {
+  height: 100%;
+}
+
+#screen-login {
+  background: url("./assets/images/header_login.jpg");
+  background-size: cover;
+
+  .login {
+    position: relative;
+    top: 50%;
+    transform: translatey(-50%);
+
+    .logo {
+      max-width: 130px;
+      margin: auto;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+#screen-login2 {
+  background: url("./assets/images/header_login.jpg");
+  background-size: cover;
+
+  .login {
+    position: relative;
+    top: 50%;
+    transform: translatey(-50%);
+
+    .logo {
+      max-width: 130px;
+      margin: auto;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+
+  .social {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    a {
+      width: 28%;
+      text-align: center;
+
+      span {
+        font-size: 25px;
+      }
+    }
+  }
+
+  .btn-info {
+    background: #177E89;
+  }
+}

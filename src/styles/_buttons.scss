@@ -1,0 +1,71 @@
+@mixin button($bg, $color) {
+  background: $bg;
+  border-top: lighten($bg, 5%);
+  border-left: lighten($bg, 10%);
+  border-right: darken($bg, 5%);
+  border-bottom: darken($color, 5%);
+  color: $color;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: $color;
+    background: darken($bg, 10%);
+  }
+}
+
+.btn-primary {
+  @include button($main-color, white);
+}
+
+.btn-secondary {
+  @include button($color2, white);
+}
+
+.btn3 {
+  @include button(#ddd, $text-color);
+}
+
+.btn-login {
+  text-align: left;
+  color: white;
+  padding: 0;
+  line-height: 30px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  padding-bottom: 3px;
+
+  span {
+    padding: 0 10px 0 13px;
+    font-size: 20px;
+    position: relative;
+    top: 3px;
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+  }
+
+  &.btn-facebook {
+    background: $facebook;
+    border-top: lighten($facebook, 10%);
+    border-left: lighten($facebook, 10%);
+    border-right: darken($facebook, 10%);
+    border-bottom: darken($facebook, 10%);
+  }
+
+  &.btn-linkedin {
+    background: $linkedin;
+    border-top: lighten($linkedin, 10%);
+    border-left: lighten($linkedin, 10%);
+    border-right: darken($linkedin, 10%);
+    border-bottom: darken($linkedin, 10%);
+  }
+
+  &.btn-google {
+    background: $google;
+    border-top: lighten($google, 10%);
+    border-left: lighten($google, 10%);
+    border-right: darken($google, 10%);
+    border-bottom: darken($google, 10%);
+  }
+}
