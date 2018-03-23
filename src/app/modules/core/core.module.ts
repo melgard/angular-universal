@@ -3,17 +3,12 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 
-import {SharedModule} from '../shared/shared.module';
-
 import {environment} from '@env/environment';
-import {SearchService} from '@app/services/search/search.service';
+import {SharedModule} from '@app/modules/shared/shared.module';
+import {ApiService, OfferService, SearchService, UserService, UtilsService} from '@app/services/index.services';
+import {ParametricsService} from '@app/modules/core/services/parametrics.service';
 
-import {UserService} from '@app/services/user.service';
-import {ApiService} from '@app/services/api.service';
-import {UtilsService} from '@app/services/utils.service';
-import {OfferService} from '@app/services/offer.service';
 
-// Add services providers and app.module only used components.
 @NgModule({
   imports: [
     CommonModule,
@@ -30,8 +25,8 @@ import {OfferService} from '@app/services/offer.service';
     ApiService,
     UtilsService,
     OfferService,
-    UserService, /*
-    ParametricsService*/
+    UserService,
+    ParametricsService
   ]
 })
 export class CoreModule {

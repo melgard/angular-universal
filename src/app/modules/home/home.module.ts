@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SharedModule} from '../shared/shared.module';
+import {SharedModule} from '@app/modules/shared/shared.module';
 import {FormsModule} from '@angular/forms';
 //Modulos Applicacion
-import {HomeRoutingModule} from './home-routing.module';
 import {CoreModule} from '@app/modules/core/core.module';
+import {HomeRoutingModule} from './home-routing.module';
 //Modulos de terceros
 import {Ng4GeoautocompleteModule} from 'ng4-geoautocomplete';
 // Components
