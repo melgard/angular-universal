@@ -1,0 +1,14 @@
+<span *ngIf="!isDraggable">
+  <ng-container [ngTemplateOutlet]="chipContent"></ng-container>
+</span>
+
+<span *ngIf="isDraggable" dnd-draggable [dragEnabled]="true" [dragData]="value">
+  <ng-container [ngTemplateOutlet]="chipContent"></ng-container>
+</span>
+
+<ng-template #chipContent>
+  <ng-content></ng-content>
+  <a *ngIf="showCloseButton" class="btn btn-link" (click)="close()">
+    <i class="fa fa-times"></i>
+  </a>
+</ng-template>

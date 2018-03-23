@@ -1,0 +1,36 @@
+@import "../../../../../styles/vars.scss";
+
+/deep/ .wall {
+  h3 {
+    margin: 40px 0;
+  }
+}
+
+/deep/ .numeros {
+  .numero,
+  .numero_dato {
+    display: block;
+    font-size: 30px;
+    font-family: $title-font;
+    font-weight: 700;
+    text-align: center;
+    line-height: 30px;
+  }
+
+  .numero_dato {
+    font-size: 16px;
+    font-weight: 300;
+    color: $gray;
+    line-height: 20px;
+  }
+}
+
+.categorias {
+  padding: 0;
+  list-style: none;
+
+  li {
+    border-bottom: 1px solid #ddd;
+    padding: 8px 0;
+  }
+}

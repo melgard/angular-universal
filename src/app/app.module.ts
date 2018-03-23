@@ -1,10 +1,11 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {APP_ID, Inject, NgModule, PLATFORM_ID} from '@angular/core';
-
+import {isPlatformBrowser} from '@angular/common';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
-import {isPlatformBrowser} from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -13,7 +14,9 @@ import {isPlatformBrowser} from '@angular/common';
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ui'}),
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,32 @@
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <h2>
+          Conectate con tu Futuro.
+          <small>Busca tu próximo trabajo.</small>
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <div class="buscador-header">
+          <span class="bucador-header-span input-group-addon ion-search"></span>
+          <input name="searchJobInput" (keyup.enter)="onSearch()" [(ngModel)]="searchJobInput" type="text"
+                 class="form-control input-lg" aria-label="busca un trabajo o empresa"
+                 placeholder="busca un trabajo o empresa">
+          <span class="bucador-header-span divider"></span>
+          <span class="bucador-header-span input-group-addon ion-location"></span>
+
+          <div class="autocomplete-location" (keydown.backspace)="onDeleteAutocompleteInput()">
+            <ng4geo-autocomplete [userSettings]="autocompleteSettings"
+                                 (componentCallback)="onLocationSelect($event)"></ng4geo-autocomplete>
+          </div>
+          <!--<input [(ngModel)]="searchLocationInput" type="text" class="form-control input-lg" placeholder="ciudad o provincia" aria-label="ciudad o provincia">-->
+          <input (click)="onSearch()" type="submit" value="buscar" class="btn btn-primary">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

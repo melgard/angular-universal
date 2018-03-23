@@ -1,0 +1,7 @@
+<div class="text-center trafic-light margintop20 col-md-3">
+  <span [ngStyle]="{'width': spanSize+'px', 'height': spanSize+'px'}" *ngFor="let light of lights"
+        (click)="changeLight(light)"
+        [class]="light.name"
+        [ngClass]="{'on': light.status===1}">
+  </span>
+</div>

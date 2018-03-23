@@ -1,0 +1,21 @@
+<article class="col-md-6">
+  <div class="oferta-laboral">
+    <div class="empresa">
+      <div class="img">
+        <img [attr.src]="featuredJob.imageUrl">
+      </div>
+      <div class="nombre">
+        <h4>{{ featuredJob.position }}</h4>
+        <h5>{{ featuredJob.company }}</h5>
+      </div>
+
+    </div>
+
+    <div class="descripcion">
+      <p
+        [innerHTML]="featuredJob.description | linky:{stripPrefix: false, truncate: { length: 32, location: 'middle' }}"></p>
+      <div class="overlay"></div>
+    </div>
+    <a href="featuredJob.id"><span class="ion-android-more-vertical"> </span> Seguir leyendo</a>
+  </div>
+</article>

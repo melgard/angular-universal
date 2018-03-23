@@ -1,0 +1,29 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" (click)="close()" aria-label="Close"><span
+        aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel">{{ modalTitle }}</h4>
+    </div>
+    <div class="modal-body">
+      <p-fileUpload
+        [disabled]="loading"
+        [name]="uploadFieldName"
+        [url]="uploadFileUrl"
+        [chooseLabel]="selectFileText"
+        [uploadLabel]="uploadFileText"
+        cancelLabel="Cancelar"
+        accept="image/*"
+        [customUpload]="true"
+        (uploadHandler)="onUpload($event)"
+        [maxFileSize]="1000000"
+      ></p-fileUpload>
+      <button class="btn btn-block btn-danger" (click)="onDeleteClick()" [disabled]="loading">{{ deleteFileText }}
+      </button>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" [disabled]="loading" (click)="close()" data-dismiss="modal">Cerrar
+      </button>
+    </div>
+  </div>
+</div>

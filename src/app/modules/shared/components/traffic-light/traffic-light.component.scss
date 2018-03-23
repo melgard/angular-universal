@@ -1,0 +1,33 @@
+
+.trafic-light {
+  span {
+    display: inline-block;
+    border-radius: 50%;
+    margin: 0 5px;
+    border: 1px solid white;
+    cursor: pointer;
+    &.ok {
+      background: darken(limegreen, 25%);
+      &.on {
+        background: limegreen;
+        box-shadow: 0 0 10px limegreen;
+      }
+    }
+
+    &.warning {
+      background: darken(gold, 25%);
+      &.on {
+        background: gold;
+        box-shadow: 0 0 10px gold;
+      }
+    }
+
+    &.out {
+      background: darken(red, 25%);
+      &.on {
+        background: red;
+        box-shadow: 0 0 10px red;
+      }
+    }
+  }
+}

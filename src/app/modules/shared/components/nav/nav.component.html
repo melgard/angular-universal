@@ -1,0 +1,111 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" (click)="goHome()"><img src="assets/images/birpin.svg"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <ng-template #customItemTemplate let-model="item">
+      <article>
+        <div class="img">
+          <img [src]="model.image_url || companyNoImage">
+        </div>
+        <div class="info">
+          <h4>{{ model.title }}</h4>
+          <h5>{{ model.subtitle }}</h5>
+        </div>
+      </article>
+    </ng-template>
+
+    <ng-template #customListTemplate let-matches="matches" let-itemTemplate="itemTemplate">
+      <section class="resultados">
+        <ul>
+          <ng-template ngFor let-match let-i="index" [ngForOf]="matches">
+            <li *ngIf="match.isHeader()" (mouseleave)="unSetActive()" (mouseenter)="setActive(match, matches)"
+                class="titulo">
+              <h6>{{ match.value }}
+                <small> ver todos</small>
+              </h6>
+            </li>
+            <li *ngIf="!match.isHeader()" (mouseleave)="unSetActive()" (mouseenter)="setActive(match, matches)"
+                [class.active]="isActive(match)">
+              <ng-template [ngTemplateOutlet]="itemTemplate"
+                           [ngTemplateOutletContext]="{item:match.item, index:i, match:match, query:query}"></ng-template>
+            </li>
+          </ng-template>
+        </ul>
+      </section>
+    </ng-template>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <form *ngIf="showNavSearch" class="navbar-form navbar-left buscador" id="buscador">
+        <div class="form-group">
+          <div class="input-group">
+            <input [(ngModel)]="searchText"
+                   [typeahead]="searchResultsSource"
+                   [typeaheadItemTemplate]="customItemTemplate"
+                   [optionsListTemplate]="customListTemplate"
+                   (typeaheadOnBlur)="onSelectItem($event)"
+                   (onSubmit)="onSearch($event)"
+                   class="form-control"
+                   name="searchText"
+                   bpCustomTypeahead
+                   autocomplete="off"
+                   typeaheadGroupField="kind"
+                   placeholder="Buscá empleos, personas o empresas."
+                   aria-describedby="basic-addon2">
+
+            <span class="input-group-addon" id="basic-addon2">
+              <span class="glyphicon glyphicon-search"></span>
+            </span>
+          </div>
+        </div>
+      </form>
+
+      <div class="nav navbar-nav navbar-right">
+        <div *ngIf="isLoggedIn" class="user">
+          <img src="http://placehold.it/40x40" class="img-circle">
+          <a (click)="toggleMenu()">{{userSession.firstName}} {{userSession.lastName}}</a>
+
+          <article class="menu-user" *ngIf="showMenu">
+            <ul>
+              <div *ngFor="let company of userSession.companies">
+                <li (click)="toggleMenu(); onMuroEmpresa(company.id)"><strong>{{ company.tradeName }}</strong></li>
+                <li (click)="toggleMenu(); onClickSettings(company.id)">Configuración</li>
+                <li (click)="toggleMenu(); onClickEmpresa(company.id)">Anuncios</li>
+                <li class="divider"></li>
+              </div>
+              <li (click)="toggleMenu(); onFeed()">Muro</li>
+              <li (click)="toggleMenu(); onMuroUsuario()">Mi perfil</li>
+              <li (click)="toggleMenu(); onMyApplies()">Mis Postulaciones</li>
+              <li>Configuración</li>
+              <li><a href="{{ getLogoutUrl() }}">Salir</a></li>
+            </ul>
+          </article>
+        </div>
+        <a *ngIf="!isLoggedIn" type="button" class="btn btn-default" href="{{getLoginUrl()}}">Ingresar</a>
+      </div>
+
+      <!-- <div class="nav navbar-nav navbar-right">
+        <div *ngIf="isLoggedIn" class="user">
+          <h4></h4>
+          <a type="button" class="btn btn-default" (click)="onClickEmpresa()">Empresa</a>
+          <a type="button" class="btn btn-default" (click)="logout()">Salir</a>
+        </div>
+                <a *ngIf="!isLoggedIn" type="button" class="btn btn-default" href="{{getLoginUrl()}}">Ingresar</a>
+      </div> -->
+
+
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>

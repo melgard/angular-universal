@@ -1,0 +1,38 @@
+<div class="container wall">
+  <section class="row">
+    <main class="col-md-9">
+      <app-be-part></app-be-part>
+
+      <section class="row numeros">
+        <div class="col-xs-12">
+          <h3 class="line">¿Qué pasa en Birpin?</h3>
+        </div>
+        <app-birpin-summary *ngFor="let summary of birpinSummary.summary"
+                            [birpinSummary]="summary"></app-birpin-summary>
+      </section>
+
+      <section>
+        <div class="row">
+          <div class="col-xs-12">
+            <h3 class="line">Ofertas destacadas</h3>
+          </div>
+          <div class="row">
+            <app-featured-job *ngFor="let job of featuredJob.featuredJob" [featuredJob]="job"></app-featured-job>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="col-md-3">
+      <h3>Ofertas por áreas</h3>
+      <ul class="categorias">
+        <li *ngFor="let filterValue of filterValues">
+          <app-home-filter-value
+            [filterValue]="filterValue"
+            (onClickFilter)="onClickFilter($event)"
+          ></app-home-filter-value>
+        </li>
+      </ul>
+    </aside>
+  </section>
+</div>

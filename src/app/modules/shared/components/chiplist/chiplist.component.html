@@ -1,0 +1,9 @@
+<div class="skills margintop20">
+  <app-chip *ngFor="let value of values; let i = index" (onRemove)="close(i)"
+            [isDraggable]="isDraggable"
+            [value]="value"
+            [showCloseButton]="showCloseButton">
+    {{value}}
+    <ng-content></ng-content>
+  </app-chip>
+</div>
