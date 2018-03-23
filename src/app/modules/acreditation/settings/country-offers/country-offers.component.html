@@ -1,0 +1,180 @@
+<body id="comprar-credito">
+<header class="header-comprar-creditos">
+  <div class="container">
+    <div class="row">
+      <article class="col-md-12">
+        <h2>Créditos Birpin</h2>
+      </article>
+    </div>
+  </div>
+</header>
+
+<section class="mejores-postulantes">
+  <div class="container">
+    <div class="row">
+      <article class="col-md-12">
+        <h3>Más y mejores postulantes a un costo sin precedente</h3>
+        <a class="btn btn-primary btn-lg text-uppercase">Compar créditos</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sp1">
+  <div class="container">
+    <div class="row">
+      <article class="col-sm-5">
+        <p>
+          Navegas y exploras sin límite alguno toda la base de datos de Birpin, tanto los postulantes que
+          inteligentemente te acerca el sistema a través de la tecnología Birpinmatch® como los que aplican al ver tu
+          aviso.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sp2">
+  <div class="container">
+    <div class="row">
+      <article class="col-sm-12">
+        <p>
+          Los créditos se pueden utilizar para todos los avisos que tenes publicados, sean de Sistemas, Marketing o RRHH
+          sin límite alguno.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sp3">
+  <div class="container">
+    <div class="row">
+      <article class="col-sm-5 col-sm-offset-7">
+        <p>
+          Con tus créditos, sólo pagas por el postulante que se alinea a tus expectativas luego de ver toda su
+          experiencia, utilizas el crédito y ves todos sus datos de contacto.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="comprar">
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md-12 text-center">
+        <h4>Créditos disponibles</h4>
+        <h2>2500</h2>
+        <hr>
+      </div>
+
+      <div class="col-md-12 text-center mercadopago">
+        <h5>Formas de pago</h5>
+        <img src="../../assets/images/mercadopago.png">
+        <hr>
+      </div>
+
+      <article class="col-md-8 col-md-offset-2">
+        <table class="table table-condensed table-bordered table-striped table-hover text-center">
+          <thead>
+          <tr>
+            <th class="text-center">Cantidad</th>
+            <th class="text-center">Precio</th>
+            <th class="text-center">Valor unitario</th>
+            <th class="text-center">Descuento</th>
+            <th class="text-center">Comprar</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let offer of countryOffers">
+            <td>{{offer.credits}} créditos</td>
+            <td>$ {{offer.price}}</td>
+            <td>$ {{offer.unitValue}}</td>
+            <td>{{offer.discount}} %</td>
+            <td><a name="MP-Checkout" [href]="url" class="btn btn-sm btn-primary" mp-mode="modal">Comprar</a></td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h4>Tabla de valores</h4>
+            <ul>
+              <li><strong>Desbloquear un perfil de un postulante:</strong> {{values.unlockPerfil}} créditos</li>
+              <li><strong>Dar exposición extra a un anuncio:</strong> {{values.extraExposure}} créditos</li>
+              <li><strong>Dar exposición máxima a un anuncio:</strong> {{values.maxExposure}} créditos</li>
+            </ul>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h5>Sobre Birpin</h5>
+        <ul>
+          <li>¿Por qué Birpin?</li>
+          <li>Equipo de proyecto</li>
+          <li>Misión y valores</li>
+        </ul>
+
+      </div>
+
+      <div class="col-md-3">
+        <h5>Ayuda</h5>
+        <ul>
+          <li>Ayuda a postulantes</li>
+          <li>Ayuda para empresas</li>
+          <li>Publicitar en Birpin</li>
+          <li>Informar un error</li>
+        </ul>
+      </div>
+
+      <div class="col-md-3"></div>
+
+      <div class="col-md-3">
+        <h5>Birpin en Latam</h5>
+        <ul class="flags">
+          <li><img src="http://wikimitos.org/images/b/b6/Bandera_de_Argentina.svg"></li>
+          <li><img src="http://wikimitos.org/images/e/e4/Bandera_de_Chile.svg"></li>
+          <li><img src="http://wikimitos.org/images/2/2d/Bandera_de_Per%C3%BA.svg"></li>
+          <li><img src="http://wikimitos.org/images/e/e1/Bandera_de_Uruguay.svg"></li>
+        </ul>
+
+        <hr>
+        <h5>Birpin en redes sociales</h5>
+        <ul class="social">
+          <li><a href=""><span class="ion-social-facebook"></span></a></li>
+          <li><a href=""><span class="ion-social-twitter"></span></a></li>
+          <li><a href=""><span class="ion-social-linkedin"></span></a></li>
+          <li><a href=""><span class="ion-social-googleplus"></span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul>
+            <li>© 2017 · Birpin</li>
+            <li> ·</li>
+            <li>Términos y condiciones</li>
+            <li>Políticas de privacidad</li>
+            <li>Seguridad</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>

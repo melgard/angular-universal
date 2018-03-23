@@ -1,6 +1,5 @@
 import {Model} from './model';
-import {BusinessCategory} from '@app/models/business-category.model';
-import {EmployeesCount} from '@app/models/employees-count.model';
+import {Parametric} from '@app/models/parametric.model';
 
 export class Company extends Model {
 
@@ -8,13 +7,13 @@ export class Company extends Model {
   public legalName: string;
   public tradeName: string;
   public registrationNumber: string;
-  public businessCategory: BusinessCategory;
+  public businessCategory: Parametric;
   public description: string;
   public logoUrl: string;
   public groupId: number;
   public professionalProfileId: number;
   public website: string;
-  public employeesCount: EmployeesCount;
+  public employeesCount: Parametric;
 
   constructor(config?) {
     super(config);

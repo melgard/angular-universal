@@ -3,17 +3,8 @@ import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 
 
-import {
-  API,
-  BusinessCategory,
-  BusinessPosition,
-  Career,
-  Cluster,
-  EmployeesCount,
-  ParametricPerk,
-  PositionType,
-  Skill
-} from '@app/models/index.models';
+import {Career, Parametric, ParametricPerk, Skill,} from '@app/models/index.models';
+import {API} from '@app/modules/core/api.constants';
 
 
 @Injectable()
@@ -24,10 +15,10 @@ export class ParametricsService {
 
   }
 
-  getClusters(): Observable<Cluster[]> {
+  getClusters(): Observable<Parametric[]> {
     return this.http
       .get(`${API.PARAMETRIC}clusters`)
-      .map(response => response.json().map(c => new Cluster(c)));
+      .map(response => response.json().map(c => new Parametric(c)));
   }
 
   getCareers(): Observable<Career[]> {
@@ -36,28 +27,28 @@ export class ParametricsService {
       .map(response => response.json().map(c => new Career(c)));
   }
 
-  getBusinessCategories(): Observable<BusinessCategory[]> {
+  getBusinessCategories(): Observable<Parametric[]> {
     return this.http
       .get(`${API.PARAMETRIC}businessCategories`)
-      .map(response => response.json().map(c => new BusinessCategory(c)));
+      .map(response => response.json().map(c => new Parametric(c)));
   }
 
-  getBusinessPositions(): Observable<BusinessPosition[]> {
+  getBusinessPositions(): Observable<Parametric[]> {
     return this.http
       .get(`${API.PARAMETRIC}businessPositions`)
-      .map(response => response.json().map(c => new BusinessPosition(c)));
+      .map(response => response.json().map(c => new Parametric(c)));
   }
 
-  getPositionType(): Observable<PositionType[]> {
+  getPositionType(): Observable<Parametric[]> {
     return this.http
       .get(`${API.PARAMETRIC}positionTypes`)
-      .map(response => response.json().map(c => new PositionType(c)));
+      .map(response => response.json().map(c => new Parametric(c)));
   }
 
-  getEmployeesCounts(): Observable<EmployeesCount[]> {
+  getEmployeesCounts(): Observable<Parametric[]> {
     return this.http
       .get(`${API.PARAMETRIC}employeesCounts`)
-      .map(response => response.json().map(c => new EmployeesCount(c)));
+      .map(response => response.json().map(c => new Parametric(c)));
   }
 
   getPerks(): Observable<ParametricPerk[]> {

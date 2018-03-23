@@ -1,0 +1,206 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      Paíces con ofertas
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <table class="table table-condensed table-bordered table-striped table-hover text-center">
+          <tr>
+            <th>País</th>
+          </tr>
+          <tr>
+            <div *ngFor="let offer of allCountryOffers">
+              <td (click)="getCountryOffers(offer.country)">{{offer.country}}</td>
+            </div>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-3">
+        <a class="btn btn-sm btn-primary">Nuevo</a>
+      </div>
+    </div>
+    <div>
+      <div class="row">
+        <div class="col-md-6">
+          Nombre del país
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" [(ngModel)]="currentOffer.country" name="currentOffer.offers[].country"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-condensed table-bordered table-striped">
+            <tr>
+              <th>Créditos</th>
+              <th>Precio</th>
+              <th>Valor unitario</th>
+              <th>Descuento</th>
+              <th>Válido desde</th>
+              <th>Válido hasta</th>
+              <th>Botón</th>
+            </tr>
+            <tr>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[0].credits"
+                       name="currentOffer.offers[0].credits"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[0].price"
+                       name="currentOffer.offers[0].price"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[0].unitValue"
+                       name="currentOffer.offers[0].unitValue"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[0].discount"
+                       name="currentOffer.offers[0].discount"/>
+              </td>
+              <td>
+                <input class="form-control" type="date" [(ngModel)]="currentOffer.offers[0].validFrom"
+                       name="currentOffer.offers[0].validFrom"/>
+              </td>
+              <td>
+                <input class="form-control" type="date" [(ngModel)]="currentOffer.offers[0].validUntil"
+                       name="currentOffer.offers[0].validUntil"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[0].button"
+                       name="currentOffer.offers[0].button"/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[1].credits"
+                       name="currentOffer.offers[1].credits"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[1].price"
+                       name="currentOffer.offers[1].price"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[1].unitValue"
+                       name="currentOffer.offers[1].unitValue"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[1].discount"
+                       name="currentOffer.offers[1].discount"/>
+              </td>
+              <td>
+                <input class="form-control" type="date" [(ngModel)]="currentOffer.offers[1].validFrom"
+                       name="currentOffer.offers[1].validFrom"/>
+              </td>
+              <td>
+                <input class="form-control" type="date" [(ngModel)]="currentOffer.offers[1].validUntil"
+                       name="currentOffer.offers[1].validUntil"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[1].button"
+                       name="currentOffer.offers[1].button"/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[2].credits"
+                       name="currentOffer.offers[2].credits"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[2].price"
+                       name="currentOffer.offers[2].price"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[2].unitValue"
+                       name="currentOffer.offers[2].unitValue"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[2].discount"
+                       name="currentOffer.offers[2].discount"/>
+              </td>
+              <td>
+                <input class="form-control" type="date" [(ngModel)]="currentOffer.offers[2].validFrom"
+                       name="currentOffer.offers[2].validFrom"/>
+              </td>
+              <td>
+                <input class="form-control" type="date" [(ngModel)]="currentOffer.offers[2].validUntil"
+                       name="currentOffer.offers[2].validUntil"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[2].button"
+                       name="currentOffer.offers[2].button"/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[3].credits"
+                       name="currentOffer.offers[3].credits"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[3].price"
+                       name="currentOffer.offers[3].price"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[3].unitValue"
+                       name="currentOffer.offers[3].unitValue"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[3].discount"
+                       name="currentOffer.offers[3].discount"/>
+              </td>
+              <td>
+                <input class="form-control" type="date" [(ngModel)]="currentOffer.offers[3].validFrom"
+                       name="currentOffer.offers[3].validFrom"/>
+              </td>
+              <td>
+                <input class="form-control" type="date" [(ngModel)]="currentOffer.offers[3].validUntil"
+                       name="currentOffer.offers[3].validUntil"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[3].button"
+                       name="currentOffer.offers[3].button"/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[4].credits"
+                       name="currentOffer.offers[4].credits"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[4].price"
+                       name="currentOffer.offers[4].price"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[4].unitValue"
+                       name="currentOffer.offers[4].unitValue"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[4].discount"
+                       name="currentOffer.offers[4].discount"/>
+              </td>
+              <td>
+                <input class="form-control" type="date" [(ngModel)]="currentOffer.offers[4].validFrom"
+                       name="currentOffer.offers[4].validFrom"/>
+              </td>
+              <td>
+                <input class="form-control" type="date" [(ngModel)]="currentOffer.offers[4].validUntil"
+                       name="currentOffer.offers[4].validUntil"/>
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="currentOffer.offers[4].button"
+                       name="currentOffer.offers[4].button"/>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="row">
+          <div class="col-md 2">
+            <a class="btn btn-sm btn-primary" (click)="upsertCountryOffers()">Guardar</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

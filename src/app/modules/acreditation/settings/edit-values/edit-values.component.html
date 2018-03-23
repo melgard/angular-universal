@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-6">
+    <label>Desbloquear un perfil</label>
+  </div>
+  <div class="col-md-6">
+    <input class="form-control" type="number" [(ngModel)]="values.unlockPerfil" name="values.unlockPerfil"/>
+  </div>
+  <div class="col-md-6">
+    <label>Exposición extra</label>
+  </div>
+  <div class="col-md-6">
+    <input class="form-control" type="number" [(ngModel)]="values.extraExposure" name="values.extraExposure"/>
+  </div>
+  <div class="col-md-6">
+    <label>Exposición máxima</label>
+  </div>
+  <div class="col-md-6">
+    <input class="form-control" type="number" [(ngModel)]="values.maxExposure" name="values.maxExposure"/>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md 2">
+    <a class="btn btn-sm btn-primary" (click)="upsertValues()">Guardar</a>
+  </div>
+</div>

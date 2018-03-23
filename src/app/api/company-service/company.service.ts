@@ -2,19 +2,22 @@ import {Inject, Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {API as companyRoutes} from './routes';
-import {Privacy} from '@app/models/privacy.model';
-import {Company} from '@app/models/company.model';
-import {CompanyInfo} from '@app/models/company-info.model';
-import {Selector} from '@app/models/selector.model';
-import {Email} from '@app/models/email.model';
-import {Phone} from '@app/models/phone.model';
-import {Address} from '@app/models/address.model';
-import {FastContactEmail} from '@app/models/fast-contact-email.model';
-import {FastContactEmailVariable} from '@app/models/fast-contact-email-variable.model';
-import {CreateSelector} from '@app/models/create-selector.model';
-import {SelectorToAdd} from '@app/models/selector-to-add.model';
-import {Perk} from '@app/models/perk.model';
-import {Website} from '@app/models/website.model';
+// Modelos
+import {
+  Address,
+  Company,
+  CompanyInfo,
+  CreateSelector,
+  Email,
+  FastContactEmail,
+  FastContactEmailVariable,
+  Parametric,
+  Perk,
+  Phone,
+  Selector,
+  SelectorToAdd,
+  Website
+} from '@app/models/index.models';
 
 
 @Injectable()
@@ -30,10 +33,10 @@ export class CompanyService {
   // ***************
   // ***** GET *****
   // ***************
-  getPrivacies(): Observable<Privacy[]> {
+  getPrivacies(): Observable<Parametric[]> {
     return this.http
       .get(companyRoutes.get.privacies())
-      .map((res: Response) => res.json().map(p => new Privacy(p)));
+      .map((res: Response) => res.json().map(p => new Parametric(p)));
   }
 
   getCompany(companyId: number): Observable<Company> {
@@ -76,10 +79,10 @@ export class CompanyService {
     return this.http.get(companyRoutes.get.companyPerks(companyId)).map((res: Response) => res.json().map(p => new Perk(p)));
   }
 
-  getCompanyPrivacies(companyId: number): Observable<Privacy[]> {
+  getCompanyPrivacies(companyId: number): Observable<Parametric[]> {
     return this.http
       .get(companyRoutes.get.companyPrivacies(companyId))
-      .map((res: Response) => res.json().map(p => new Privacy(p)));
+      .map((res: Response) => res.json().map(p => new Parametric(p)));
   }
 
   getCompanyFastContactEmail(companyId: number): Observable<FastContactEmail[]> {
