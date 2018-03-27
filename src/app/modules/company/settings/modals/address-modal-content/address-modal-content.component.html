@@ -1,0 +1,25 @@
+<form class="form-horizontal" [formGroup]="modalForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Dirección</label>
+    <div class="col-sm-9 autocomplete-location" [class.invalid-field]="currentAddress"
+         (keydown.backspace)="onDeleteAutocompleteInput()">
+      <ng4geo-autocomplete [userSettings]="autocompleteSettings"
+                           (componentCallback)="onLocationSelect($event)"></ng4geo-autocomplete>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <input formControlName="primary" type="checkbox" id="primary" name="primary" value="" checked/> Dirección primaria
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <input formControlName="privateAddress" type="checkbox" id="privateAddress" name="privateAddress" value=""
+             checked/> No publicar esta dirección
+    </div>
+  </div>
+
+  <button [disabled]="!modalForm.valid || sendingForm" type="submit" class="btn btn-primary">Guardar</button>
+</form>

@@ -1,11 +1,11 @@
 import {Inject, Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {CompanyStat} from '@app/models/company-stat.model';
 import {Observable} from 'rxjs/Rx';
 import {Router} from '@angular/router';
 import {UserSession} from '@app/models/user-session.model';
+import {HttpClient} from '@angular/common/http';
 
 
 @Injectable()
@@ -14,26 +14,17 @@ export class UserService {
 
   constructor(@Inject('environment') private environment,
               private router: Router,
-              private http: Http) {
+              private httpClient: HttpClient) {
   }
 
+  // TODO HTTP CLIENT
   public fetchUser() {
     this
-      .http
-      .get(`${this.environment.api_url}/me`)
-      .map((res: Response) => res.json())
-      .subscribe(resultJson => {
-        const userSession = new UserSession(
-          resultJson.signedIn,
-          resultJson.firstName,
-          resultJson.lastName,
-          resultJson.companies,
-          resultJson.username
-        );
-
+      .httpClient
+      .get<UserSession>(`${this.environment.api_url}/me`)
+      .subscribe(userSession => {
         this.loggedIn.next(userSession);
-      })
-    ;
+      });
   }
 
   isLoggedIn() {
@@ -54,9 +45,8 @@ export class UserService {
   }
 
   logout() {
-    this.http
+    this.httpClient
       .get(`${this.environment.api_url}/logout`)
-      // .map( (res:Response) => res.json())
       .subscribe(_ => {
         this.loggedIn.next(new UserSession());
       });
@@ -67,8 +57,8 @@ export class UserService {
     return 2000;
   }
 
+  // TODO: Quitar hardcode
   public getStats(): Observable<CompanyStat[]> {
-
     const mockedStats: CompanyStat[] = [
       new CompanyStat('Avisos publicados', 32),
       new CompanyStat('En proceso', 12),
@@ -81,12 +71,11 @@ export class UserService {
   }
 
   public setStatus(statusId: number) {
-    return this.http.post(`${this.environment.api_url}/api/users/status/${statusId}`, {});
+    return this.httpClient.post(`${this.environment.api_url}/api/users/status/${statusId}`, {});
   }
 
   public getStatus() {
-    return this.http.get(`${this.environment.api_url}/api/users/status`, {})
-      .map((res) => res.json());
+    return this.httpClient.get(`${this.environment.api_url}/api/users/status`, {});
   }
 
   private redirectUser(userSession: UserSession) {

@@ -9,8 +9,8 @@ import {PaymentService} from '../../../../services/payment.service';
 })
 export class EditCountryOffersComponent implements OnInit {
 
-  allCountryOffers = [];
-  currentOffer = {
+  public allCountryOffers: any[] = [];
+  public currentOffer: any = {
     offers: [
       {},
       {},

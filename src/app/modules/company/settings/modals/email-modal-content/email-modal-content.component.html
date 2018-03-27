@@ -1,0 +1,20 @@
+<form class="form-horizontal" [formGroup]="modalForm" (ngSubmit)="onSubmit()">
+  <div class="form-group" [ngClass]="{'has-error': formErrors.email}">
+    <label for="email" class="col-sm-3 control-label">Email</label>
+    <div class="col-sm-9">
+      <input formControlName="email" id="email" aria-describedby="emailErrors" name="email" required type="text"
+             class="form-control" placeholder="Ingresá un email">
+    </div>
+
+    <span *ngIf="formErrors.email" id="websiteErrors"
+          class="col-sm-offset-3 col-sm-9 help-block">{{ formErrors.email }}</span>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <input formControlName="primary" type="checkbox" id="primary" name="primary" value="" checked/> Email primario
+    </div>
+  </div>
+
+  <button [disabled]="!modalForm.valid || sendingForm" type="submit" class="btn btn-primary">Guardar</button>
+</form>

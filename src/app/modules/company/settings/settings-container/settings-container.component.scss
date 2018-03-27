@@ -1,0 +1,119 @@
+@import "../../../../../styles/vars.scss";
+
+:host /deep/ {
+  ::ng-deep p-dialog .ui-dialog {
+    overflow: scroll;
+    max-height: 100%;
+  }
+
+  .beneficios {
+    label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .phone-form {
+    input {
+      width: 100%;
+    }
+  }
+
+  .datos {
+    .profile {
+      display: block;
+      max-width: 150px;
+      margin: auto;
+      position: relative;
+
+      .config-btn {
+        position: absolute;
+        font-size: 22px;
+        left: 50%;
+        top: 50%;
+        background: rgba(0, 0, 0, 0.4);
+        color: white;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translate(-50%, -50%);
+        display: none;
+      }
+
+      &:hover .config-btn {
+        display: flex;
+      }
+    }
+
+    .items {
+      margin-bottom: 20px;
+      p {
+        margin-bottom: 5px;
+
+        &.titulo {
+          text-transform: uppercase;
+          margin-bottom: 5px;
+          span {
+            margin-left: 10px;
+          }
+        }
+
+        .actions {
+          display: none;
+          margin-left: 10px;
+          span {
+            margin-right: 5px;
+
+            &.fa-trash {
+              color: red;
+            }
+          }
+        }
+
+        &:hover {
+          .actions {
+            display: inline-block;
+
+          }
+        }
+      }
+    }
+  }
+
+  .emails-timeline {
+    ul {
+      padding: 0;
+      list-style: none;
+      li {
+        padding: 10px 0;
+        border-bottom: 1px solid #dcdcdc;
+
+        a {
+          color: $text-color;
+        }
+
+        .actions {
+          span {
+            margin: 0 4px;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+
+  .setvar {
+    display: none;
+    div {
+      display: flex;
+      align-items: center;
+      label, input, select {
+        margin-right: 10px;
+      }
+    }
+  }
+}

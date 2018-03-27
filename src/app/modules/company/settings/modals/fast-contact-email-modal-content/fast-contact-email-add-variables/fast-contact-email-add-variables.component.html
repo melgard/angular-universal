@@ -1,0 +1,24 @@
+<div class="well margintop20">
+  <h5>Agregar variable</h5>
+  <div class="margintop20">
+    <form [formGroup]="variableForm" (ngSubmit)="onSubmit()" class="form-inline">
+      <div class="form-group">
+        <label>Nombre:</label>
+        <input class="form-control" formControlName="variableName">
+      </div>
+
+      <div class="form-group">
+        <label>Tipo:</label>
+        <select class="form-control" formControlName="variableValue">
+          <option *ngFor="let variable of variables" [value]="variable.value">{{ variable.description }}</option>
+        </select>
+      </div>
+
+      <button [disabled]="!validForm()" class="btn btn-primary pull-right" type="submit">agregar</button>
+    </form>
+  </div>
+
+  <app-fast-contact-email-variable-list
+    (onRemoveVariable)="emitRemoveVariable($event)"
+  ></app-fast-contact-email-variable-list>
+</div>

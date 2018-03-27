@@ -1,0 +1,13 @@
+<form class="form-horizontal" [formGroup]="modalForm" (ngSubmit)="onSubmit()">
+  <div class="form-group" [ngClass]="{'has-error': formErrors.website}">
+    <label for="website" class="col-sm-3 control-label">Website</label>
+    <div class="col-sm-9">
+      <input formControlName="website" id="website" aria-describedby="websiteErrors" name="website" required type="text"
+             class="form-control" placeholder="Ingresá el website">
+    </div>
+
+    <span *ngIf="formErrors.website" id="websiteErrors" class="col-sm-offset-3 col-sm-9 help-block">{{ formErrors.website }}</span>
+  </div>
+
+  <button [disabled]="!modalForm.valid || sendingForm" type="submit" class="btn btn-primary">Guardar</button>
+</form>

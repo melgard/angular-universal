@@ -1,0 +1,29 @@
+<h4>Beneficios Generales</h4>
+
+<div class="well">
+  <app-company-perks-list *ngIf="!displayCompanyPerksModal"
+                          [companyPerks]="companyPerks"
+                          [perks]="favoritePerks"
+                          (onPerkToggle)="onPerkToggle($event)"
+  ></app-company-perks-list>
+
+  <div>
+    <hr>
+  </div>
+
+  <div class="text-center">
+    <a (click)="openPerksModal()">
+      <small>ver todos ({{ perks.length }})</small>
+    </a>
+  </div>
+</div>
+
+<p-dialog *ngIf="displayCompanyPerksModal" (onHide)="displayCompanyPerksModal = false;"
+          header="Editar/Agregar Beneficio" [(visible)]="displayCompanyPerksModal" [modal]="true" [draggable]="false"
+          [resizable]="false">
+  <app-company-perks-modal-content
+    [perks]="perks"
+    [companyPerks]="companyPerks"
+    (onPerkToggle)="onPerkToggle($event)"
+  ></app-company-perks-modal-content>
+</p-dialog>

@@ -1,3 +1,6 @@
+import {OfferSearchResult} from '@app/models/search-result-offer.model';
+import {ActiveFilter} from '@app/models/filter.model';
+
 export {Parametric} from './parametric.model';
 export {ParametricPerk} from './parametric-perk.model';
 
@@ -17,4 +20,12 @@ export {CreateSelector} from '@app/models/create-selector.model';
 export {SelectorToAdd} from '@app/models/selector-to-add.model';
 export {Perk} from '@app/models/perk.model';
 export {Website} from '@app/models/website.model';
+export {Privacy} from '@app/models/privacy.model';
+
+export {ActiveFilter, Filter, Value} from '@app/models/filter.model.ts';
+export {OfferSearchResult} from '@app/models/search-result-offer.model.ts';
+export {UserSearchResult} from '@app/models/search-result-user.model.ts';
+export {CompanySearchResult} from '@app/models/search-result-company.model.ts';
+
+
 

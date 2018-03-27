@@ -1,0 +1,38 @@
+<h4>Perfil</h4>
+<div class="well datos">
+
+  <div class="profile">
+    <img class="img-circle img-responsive" [src]="company.logoUrl || noImage">
+
+    <span class="config">
+      <a (click)="showPostSimpleUploadFileModal()">
+        <span class="fa fa-cog config-btn"></span>
+      </a>
+    </span>
+  </div>
+
+  <h3 class="text-center">{{ company.tradeName }}</h3>
+
+  <p>
+    <small>{{ company.description }}</small>
+  </p>
+  <hr>
+  <article class="items">
+    <p class="titulo">
+      <strong>cantidad de empleados</strong>: {{ company.employeesCount ? company.employeesCount.description : null }}
+    </p>
+
+    <div class="margintop20 text-center">
+      <a (click)="openCompanyModal()" class="btn btn-default btn-sm">Editar información</a>
+    </div>
+
+  </article>
+</div>
+
+<p-dialog *ngIf="displayCompanyModal" header="Editar información" [(visible)]="displayCompanyModal" [modal]="true"
+          [draggable]="false" [resizable]="false">
+  <app-company-info-modal-content
+    [company]="company"
+    (onSubmitSuccess)="emitEditCompanySuccess()"
+  ></app-company-info-modal-content>
+</p-dialog>

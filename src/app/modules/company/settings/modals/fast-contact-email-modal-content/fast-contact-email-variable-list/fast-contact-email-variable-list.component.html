@@ -1,0 +1,8 @@
+<app-chiplist
+  [values]="(stringVariables$ | async)"
+  (onRemove)="onClickDelete($event)"
+  [showCloseButton]="true"
+  [isDraggable]="true"
+  confirmCloseTitle="¿Remover variable?"
+  confirmCloseText="Si acepta se eliminará la variable de los textos donde ha sido utilizada."
+></app-chiplist>

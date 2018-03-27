@@ -1,0 +1,25 @@
+<article class="oferta-laboral col-xs-12">
+  <div class="well">
+    <div class="empresa">
+      <div class="img">
+        <img class="img-responsive" [src]="offer.image_url || noImage">
+      </div>
+      <div class="nombre">
+        <h4 (click)="onSelectOffer()" style="cursor: pointer">{{ offer.title }}</h4>
+        <h5>{{ offer.subtitle }}</h5>
+        <small>{{ getElapsedTime() }}</small>
+      </div>
+    </div>
+
+    <div class="descripcion">
+      <p [innerHTML]="offer.description | linky:{stripPrefix: false, truncate: { length: 32, location: 'middle' }}"></p>
+    </div>
+
+    <p class="zona">Zona: {{ offer.location }}</p>
+    <a *ngIf="!isLoggedIn" type="button" class="btn btn-primary aplicar" href="{{ getLoginUrl() }}">{{
+      getActionButtonText(offer.id) }}</a>
+    <button *ngIf="isLoggedIn" (click)="onActionButton()" class="btn btn-primary aplicar">{{
+      getActionButtonText(offer.id) }}
+    </button>
+  </div>
+</article>

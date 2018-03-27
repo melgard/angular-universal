@@ -1,0 +1,102 @@
+<h4>Ubicación y contacto</h4>
+<div class="well datos">
+  <article class="items">
+    <p class="titulo">
+      <strong>sitio web</strong>
+      <a *ngIf="!website" (click)="openWebsiteModal()"><span class="fa fa-plus-circle push-right"></span></a>
+    </p>
+
+    <p *ngIf="website">
+      <a [href]="website">{{ website }}</a>
+
+      <span class="actions">
+        <span class="fa fa-pencil" (click)="onEditWebsite()"></span>
+        <span class="fa fa-trash" (click)="onDeleteWebsite()"></span>
+      </span>
+    </p>
+  </article>
+
+  <article class="items">
+    <p class="titulo">
+      <strong>email</strong>
+      <a (click)="openEmailModal()"><span class="fa fa-plus-circle push-right"></span></a>
+    </p>
+
+    <p *ngFor="let email of emails">
+      {{ email.email }}
+
+      <span class="actions">
+        <span class="fa fa-pencil" (click)="onEditEmail(email)"></span>
+        <span class="fa fa-trash" (click)="onDeleteEmail(email)"></span>
+      </span>
+    </p>
+  </article>
+
+  <article class="items">
+    <p class="titulo">
+      <strong>teléfono</strong>
+      <a (click)="openPhoneModal()"><span class="fa fa-plus-circle push-right"></span></a>
+    </p>
+
+    <p *ngFor="let phone of phones">
+      {{ phone.phone }}
+
+      <span class="actions">
+        <span class="fa fa-pencil" (click)="onEditPhone(phone)"></span>
+        <span class="fa fa-trash" (click)="onDeletePhone(phone)"></span>
+      </span>
+    </p>
+  </article>
+
+  <article class="items">
+    <p class="titulo">
+      <strong>dirección</strong>
+      <a (click)="openAddressModal()"><span class="fa fa-plus-circle push-right"></span></a>
+    </p>
+
+    <p *ngFor="let address of addresses">
+      <a [href]="">{{ address.fullAddress }}</a>
+
+      <span class="actions">
+          <span class="fa fa-pencil" (click)="onEditAddress(address)"></span>
+          <span class="fa fa-trash" (click)="onDeleteAddress(address)"></span>
+      </span>
+    </p>
+  </article>
+</div>
+
+<p-dialog *ngIf="displayWebsiteModal" header="Editar Website" [(visible)]="displayWebsiteModal" [modal]="true"
+          [draggable]="false" [resizable]="false">
+  <app-website-modal-content
+    [website]="getWebsite()"
+    [companyId]="companyId"
+    (onSubmitSuccess)="emitEditWebsiteSuccess()"
+  ></app-website-modal-content>
+</p-dialog>
+
+<p-dialog *ngIf="displayEmailModal" header="Editar/Agregar Email" [(visible)]="displayEmailModal" [modal]="true"
+          [draggable]="false" [resizable]="false">
+  <app-email-modal-content
+    [email]="selectedEmail"
+    [companyId]="companyId"
+    (onSubmitSuccess)="emitEditEmailSuccess()"
+  ></app-email-modal-content>
+</p-dialog>
+
+<p-dialog *ngIf="displayPhoneModal" header="Editar/Agregar Teléfono" [(visible)]="displayPhoneModal" [modal]="true"
+          [draggable]="false" [resizable]="false">
+  <app-phone-modal-content
+    [phone]="selectedPhone"
+    [companyId]="companyId"
+    (onSubmitSuccess)="emitEditPhoneSuccess()"
+  ></app-phone-modal-content>
+</p-dialog>
+
+<p-dialog *ngIf="displayAddressModal" header="Editar/Agregar Dirección" [(visible)]="displayAddressModal" [modal]="true"
+          [draggable]="false" [resizable]="false">
+  <app-address-modal-content
+    [address]="selectedAddress"
+    [companyId]="companyId"
+    (onSubmitSuccess)="emitEditAddressSuccess()"
+  ></app-address-modal-content>
+</p-dialog>

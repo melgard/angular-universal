@@ -1,0 +1,24 @@
+<article class="col-md-12 user-profile-horizontal">
+  <div class="well">
+    <div class="info">
+      <div class="foto">
+        <img class="img-responsive img-rounded" [src]="company.image_url || noImage">
+      </div>
+      <div class="datos">
+        <h4 (click)="onTitle()">{{ company.title }}</h4>
+        <h6>{{ company.subtitle }}</h6>
+        <small>{{ company.followersCount }} contactos siguen a esta empresa</small>
+        <span> · </span>
+        <small>{{ company.followersCount }} seguidores</small>
+      </div>
+    </div>
+
+    <div class="acciones">
+      <a *ngIf="!isLoggedIn" type="button" class="btn btn-primary aplicar" href="{{ getLoginUrl() }}">{{
+        getActionButtonText() }}</a>
+      <button *ngIf="isLoggedIn" (click)="onActionButton()" class="btn btn-primary btn-block">{{ getActionButtonText()
+        }}
+      </button>
+    </div>
+  </div>
+</article>

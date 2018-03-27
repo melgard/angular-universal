@@ -1,0 +1,47 @@
+<div class="body-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Resultados de búsqueda para: <strong>{{ getGlobalSearchText() }}</strong></h3>
+      </div>
+      <div class="col-md-2 filtros">
+        <section *ngFor="let filter of availableFilters">
+          <app-filter [filter]="filter" (clicked)="onSelectFilter($event)"></app-filter>
+        </section>
+      </div>
+      <div class="col-md-7">
+        <section class="row">
+          <article class="col-md-12 ordenar">
+            <div class="separador">
+              <div class="row">
+                <div class="col-md-6">
+                  <p><strong>{{ getResultSize() }}</strong> resultados</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- <article class="col-xs-12 filtros-activos">
+            <span *ngFor="let activeFilter of activeFilters" class="label label-default">{{ getSelectedValue(activeFilter.values).description }} <span class="glyphicon glyphicon-remove" (click)="removeFilter(activeFilter)"></span></span>
+          </article> -->
+
+          <app-content *ngFor="let result of searchResults"
+                       [result]="result"
+                       (onFilterBy)="onFilterBy($event)"
+          ></app-content>
+
+        </section>
+      </div>
+
+      <aside class="col-md-3">
+        <small>espacio de publicidad</small>
+        <article>
+          <!--<img src="http://www.upidea.com.ar/web/wp-content/uploads/2014/08/Ambito-financiero.png" class="img-responsive">-->
+          <img
+            src="http://2.bp.blogspot.com/_S1s02pYsKbs/SPrAPy8uJLI/AAAAAAAAAAU/8mhJFeNsVpg/s400/hipodromo_argentino_de_palermo.jpg"
+            class="img-responsive">
+        </article>
+      </aside>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="beneficios">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let perk of availablePerks">
+      <div class="checkbox">
+        <label data-toggle="tooltip" data-placement="top" [title]="perk.description">
+          <input type="checkbox" [disabled]="perk.disabled" [(ngModel)]="perk.value" [checked]="perk.value"
+                 (ngModelChange)="emitPerkToggle(perk)"> {{ perk.description }}
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,10 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
+import {CoreModule} from '@app/modules/core/core.module';
+import {SharedModule} from '@app/modules/shared/shared.module';
+import {environment} from '@env/environment';
+import {UserService} from '@app/services/index.services';
 
 
 @NgModule({
@@ -16,9 +20,14 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule.withServerTransition({appId: 'ui'}),
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CoreModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [
+    {provide: 'environment', useValue: environment},
+    UserService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

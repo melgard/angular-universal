@@ -1,0 +1,8 @@
+<article>
+  <h5>{{ getDescription() }}</h5>
+  <ul>
+    <li *ngFor="let value of filter.values" (click)="onClick(value)">{{ getValueDescription(value) }}
+      <small>({{ value.count }})</small>
+    </li>
+  </ul>
+</article>

@@ -9,7 +9,7 @@ import {PaymentService} from '@app/services/payment.service';
 })
 export class EditValuesComponent implements OnInit {
 
-  values = {};
+  public values: any = {};
 
   constructor(private paymentService: PaymentService) {
   }

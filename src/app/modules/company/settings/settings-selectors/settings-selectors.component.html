@@ -1,0 +1,84 @@
+<h4>Selectores</h4>
+
+<div class="well row">
+  <div class="col-sm-12">
+    <label for="userSearchInput" class="col-sm-3 control-label">Buscar usuario</label>
+    <div class="col-sm-5">
+      <input [(ngModel)]="searchText"
+             [typeahead]="searchResultsSource"
+             [typeaheadItemTemplate]="customItemTemplate"
+             (typeaheadOnSelect)="onClickItem($event)"
+             id="userSearchInput"
+             class="form-control">
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <hr>
+
+    <h5>Invitar selector</h5>
+    <form class="form-horizontal" [formGroup]="selectorsToAddForm" (ngSubmit)="onSubmit()">
+      <label for="professionalProfileEmail" class="col-sm-1 control-label">Email</label>
+      <div class="col-sm-4">
+        <input type="email" formControlName="professionalProfileEmail" class="form-control"
+               id="professionalProfileEmail" placeholder="Email del editor">
+
+        <small [hidden]="selectorsToAddForm.controls.professionalProfileEmail.valid">
+          {{ formErrors.professionalProfileEmail }}
+        </small>
+      </div>
+
+      <label for="professionalProfileFullName" class="col-sm-1 control-label">Nombre</label>
+      <div class="col-sm-4">
+        <input type="text" formControlName="professionalProfileFullName" class="form-control"
+               id="professionalProfileFullName" placeholder="Nombre del editor">
+
+        <small [hidden]="selectorsToAddForm.controls.professionalProfileFullName.valid">
+          {{ formErrors.professionalProfileFullName }}
+        </small>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-2">
+          <button [disabled]="!selectorsToAddForm.valid || sendingSelectorToAdd" type="submit" class="btn btn-default">
+            Enviar invitación
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <hr>
+  </div>
+
+  <div *ngFor="let selector of selectors">
+    <hr>
+    <p>{{ selector.fullName }} <i *ngIf="!selector.alreadyConfirmed"> (pendiente)</i> <a [href]=""
+                                                                                         style="cursor: pointer;"
+                                                                                         (click)="clickDeleteSelector(selector)"
+                                                                                         class="pull-right"><span
+      class="fa fa-trash"></span> Eliminar</a></p>
+  </div>
+</div>
+
+<ng-template #customItemTemplate let-model="item" let-index="index">
+  <article>
+    <div class="img">
+      <img src="{{ model.image_url || 'assets/images/no-profile-pic.svg' }}">
+    </div>
+    <div class="info">
+      <h4>{{ model.title }}</h4>
+      <h5>{{ model.subtitle }}</h5>
+    </div>
+  </article>
+</ng-template>
+
+<p-dialog *ngIf="displayAddSelectorModal" header="Agregar Selector" [(visible)]="displayAddSelectorModal" [modal]="true"
+          [draggable]="false" [resizable]="false" (onHide)="onHideAddSelector()">
+  <app-add-selector-modal-content
+    [userSearchResult]="selectedUserSearchResult"
+    [companyId]="companyId"
+    (onSubmitSuccess)="emitSelectorAddSuccess()"
+  ></app-add-selector-modal-content>
+</p-dialog>
+
+<p-confirmDialog acceptLabel="Si" acceptIcon="fa-trash"></p-confirmDialog>

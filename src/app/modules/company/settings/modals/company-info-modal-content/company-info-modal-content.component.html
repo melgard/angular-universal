@@ -1,0 +1,47 @@
+<form class="form-horizontal" [formGroup]="modalForm" (ngSubmit)="onSubmit()" *ngIf="ready">
+
+  <div class="form-group" [ngClass]="{'has-error': formErrors.legalName}">
+    <label for="legalName" class="col-sm-3 control-label">Razón social</label>
+    <div class="col-sm-9">
+      <input formControlName="legalName" id="legalName" aria-describedby="legalNameErrors" name="legalName" required
+             type="text" class="form-control" placeholder="Ingresá la razón social">
+    </div>
+
+    <span *ngIf="formErrors.legalName" id="legalNameErrors" class="col-sm-offset-3 col-sm-9 help-block">{{ formErrors.legalName }}</span>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-error': formErrors.tradeName}">
+    <label for="tradeName" class="col-sm-3 control-label">Nombre Comercial</label>
+    <div class="col-sm-9">
+      <input formControlName="tradeName" id="tradeName" aria-describedby="tradeNameErrors" name="tradeName" required
+             type="text" class="form-control" placeholder="Ingresá el nombre comercial">
+    </div>
+
+    <span *ngIf="formErrors.tradeName" id="tradeNameErrors" class="col-sm-offset-3 col-sm-9 help-block">{{ formErrors.tradeName }}</span>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-error': formErrors.description}">
+    <label for="description" class="col-sm-3 control-label">Descripción</label>
+    <div class="col-sm-9">
+      <textarea formControlName="description" id="description" aria-describedby="descriptionErrors" name="description"
+                required type="text" class="form-control" placeholder="Ingresá la descripción de la empresa"></textarea>
+    </div>
+
+    <span *ngIf="formErrors.description" id="descriptionErrors" class="col-sm-offset-3 col-sm-9 help-block">{{ formErrors.description }}</span>
+  </div>
+
+
+  <div class="form-group">
+    <label for="employeesCount" class="col-sm-3 control-label">Cantidad de empleados</label>
+    <div class="col-sm-9">
+      <select formControlName="employeesCount" class="form-control" id="employeesCount" name="employeesCount">
+        <option selected value="">No mostrar</option>
+        <option [value]="employeesCount.id" *ngFor="let employeesCount of employeesCounts">
+          {{employeesCount.description}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <button [disabled]="!modalForm.valid || sendingForm" type="submit" class="btn btn-primary">Guardar</button>
+</form>

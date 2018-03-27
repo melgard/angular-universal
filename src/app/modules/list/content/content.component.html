@@ -1,0 +1,12 @@
+<div class="col-xs-12 title-search">
+  <h4>{{ getResultTitle() }}</h4>
+  <a class="ver-todos" style="cursor: pointer" (click)="emitFilterBy()">Ver todos</a>
+</div>
+
+<div *ngIf='ready'>
+  <div *ngFor='let value of result.values'>
+    <app-offer *ngIf='result.type === "offer"' [appliedOfferIds]="appliedOfferIds" [offer]="value"></app-offer>
+    <app-company *ngIf='result.type === "company"' [company]="value"></app-company>
+    <app-user *ngIf='result.type === "user"' [user]="value"></app-user>
+  </div>
+</div>

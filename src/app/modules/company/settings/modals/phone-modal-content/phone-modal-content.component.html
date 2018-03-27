@@ -1,0 +1,43 @@
+<form class="form-horizontal" [formGroup]="modalForm" (ngSubmit)="onSubmit()">
+  <div class="form-group phone-form" [ngClass]="{'has-error': formErrors.phone}">
+    <!--<label for="phone" class="col-sm-3 control-label">Teléfono</label>-->
+    <label class="col-sm-3 control-label">Teléfono</label>
+    <div class="col-sm-9">
+      <div class="form-inline">
+        <div class="row">
+          <div class="col-sm-2 form-group">
+            <input type="text" [maxlength]="maxCountryInputSize" class="form-control" formControlName="country"
+                   placeholder="54">
+          </div>
+
+          <div class="col-sm-2 form-group">
+            <input type="text" [maxlength]="maxAreaInputSize" class="form-control" formControlName="area"
+                   placeholder="011">
+          </div>
+
+          <div class="col-sm-4 form-group">
+            <input type="text" [maxlength]="maxPrefixInputSize" class="form-control" formControlName="prefix"
+                   placeholder="5555">
+          </div>
+
+          <div class="col-sm-4 form-group">
+            <input type="text" [maxlength]="maxLineInputSize" class="form-control" formControlName="line"
+                   placeholder="5555">
+          </div>
+        </div>
+      </div>
+      <!--<input formControlName="phone" id="phone" aria-describedby="phoneErrors" name="phone" required type="text" class="form-control" placeholder="Ingresá un teléfono">-->
+    </div>
+
+    <span *ngIf="formErrors.phone" id="phoneErrors"
+          class="col-sm-offset-3 col-sm-9 help-block">{{ formErrors.phone }}</span>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <input formControlName="primary" type="checkbox" id="primary" name="primary" value="" checked/> Teléfono primario
+    </div>
+  </div>
+
+  <button [disabled]="!modalForm.valid || sendingForm" type="submit" class="btn btn-primary">Guardar</button>
+</form>

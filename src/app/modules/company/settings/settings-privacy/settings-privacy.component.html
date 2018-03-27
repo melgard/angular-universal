@@ -1,0 +1,10 @@
+<h4>Configuración de privacidad</h4>
+<div class="well datos">
+  <div class="checkbox" *ngFor="let priv of privacyList">
+    <label>
+      <input [disabled]="priv.disabled" type="checkbox" [(ngModel)]="priv.value" [checked]="priv.value"
+             (ngModelChange)="onPrivacyClick(priv)">
+      {{ getDescription(priv) }}
+    </label>
+  </div>
+</div>

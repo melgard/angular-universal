@@ -1,0 +1,72 @@
+<div class="body-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Resultados de búsqueda para: <strong>{{ getGlobalSearchText() }}</strong></h3>
+      </div>
+      <div class="col-md-2 filtros">
+        <section *ngFor="let filter of availableFilters">
+          <app-filter [filter]="filter" (clicked)="onSelectFilter($event)"></app-filter>
+        </section>
+      </div>
+      <div class="col-md-7">
+        <section class="row">
+          <article class="col-md-12 ordenar">
+            <div class="separador">
+              <div class="row">
+                <div class="col-md-6">
+                  <p><strong>{{ getResultSize() }}</strong> resultados</p>
+                </div>
+
+                <div class="col-md-6" *ngIf="availableSorts && availableSorts.length">
+                  <form class="form-inline">
+                    <div class="form-group text-right">
+                      <label>ordernar por </label>
+                      <select class="form-control input-sm" [(ngModel)]="selectedSort"
+                              [ngModelOptions]="{standalone: true}" (change)="onSelectedSort()">
+                        <option disabled [ngValue]="null"> elegir una opción</option>
+                        <option *ngFor="let sort of availableSorts" [ngValue]="sort"> {{ sort.name }}</option>
+                      </select>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="col-xs-12 filtros-activos">
+            <span *ngFor="let activeFilter of activeFilters" class="label label-default">{{ activeFilter.showingDescription }} <span
+              class="glyphicon glyphicon-remove" (click)="removeFilter(activeFilter)"></span></span>
+          </article>
+
+          <div *ngIf="ready">
+            <div *ngFor="let result of searchResults"
+                 infiniteScroll
+                 immediateCheck="true"
+                 [infiniteScrollDistance]="0.3"
+                 [infiniteScrollThrottle]="300"
+                 (scrolled)="onScroll()">
+              <app-offer *ngIf='result.getKind() === "offer"' [appliedOfferIds]="appliedOfferIds"
+                         [offer]="result"></app-offer>
+              <app-company *ngIf='result.getKind() === "company"' [company]="result"></app-company>
+              <app-user *ngIf='result.getKind() === "user"' [user]="result"></app-user>
+            </div>
+          </div>
+
+          <div *ngIf="!nextPage">¡Fin de los resultados!</div>
+
+        </section>
+      </div>
+
+      <aside class="col-md-3">
+        <small>espacio de publicidad</small>
+        <article>
+          <!--<img src="http://www.upidea.com.ar/web/wp-content/uploads/2014/08/Ambito-financiero.png" class="img-responsive">-->
+          <img
+            src="http://2.bp.blogspot.com/_S1s02pYsKbs/SPrAPy8uJLI/AAAAAAAAAAU/8mhJFeNsVpg/s400/hipodromo_argentino_de_palermo.jpg"
+            class="img-responsive">
+        </article>
+      </aside>
+    </div>
+  </div>
+</div>

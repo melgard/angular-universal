@@ -1,0 +1,24 @@
+<article class="col-md-12 user-profile-horizontal">
+  <div class="well">
+    <div class="info">
+      <div class="foto">
+        <img class="img-responsive img-circle" [src]="user.image_url || noImage">
+      </div>
+      <div class="datos">
+        <h4 (click)="onTitle()">{{ user.title }}</h4>
+        <h6>{{ user.subtitle }}</h6>
+        <small>Trabaja en: {{ user.currentWork }}</small>
+        <span> · </span>
+        <small>26 contactos en común</small>
+      </div>
+    </div>
+
+    <div class="acciones">
+      <a *ngIf="!isLoggedIn" type="button" class="btn btn-primary aplicar" href="{{ getLoginUrl() }}">{{
+        getActionButtonText() }}</a>
+      <button *ngIf="isLoggedIn" (click)="onActionButton()" class="btn btn-primary btn-block">{{ getActionButtonText()
+        }}
+      </button>
+    </div>
+  </div>
+</article>

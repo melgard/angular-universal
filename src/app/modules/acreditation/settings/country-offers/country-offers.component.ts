@@ -9,9 +9,9 @@ import {PaymentService} from '@app/services/payment.service';
 })
 export class CountryOffersComponent implements OnInit {
 
-  countryOffers = [];
-  values = {};
-  url = 'https://www.mercadopago.com/mla/checkout/start?pref_id=296685205-06ef6811-cf1a-4e09-b0e5-4d0fc8624910';
+  public countryOffers: any[] = [];
+  public values: any = {};
+  public url: string = 'https://www.mercadopago.com/mla/checkout/start?pref_id=296685205-06ef6811-cf1a-4e09-b0e5-4d0fc8624910';
 
   constructor(private paymentService: PaymentService) {
   }

@@ -1,0 +1,32 @@
+<app-fast-contact-email-add-variables
+  (onRemoveVariable)="onRemoveVariable($event)"
+></app-fast-contact-email-add-variables>
+
+<form [formGroup]="fastContactEmailForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="emailTitle">Titulo</label>
+    <input formControlName="title" class="form-control" id="emailTitle" placeholder="Titulo descriptivo">
+  </div>
+
+  <hr>
+
+  <div class="form-group">
+    <label for="emailSubject">Asunto</label>
+    <input formControlName="subject" dnd-droppable (onDropSuccess)="onDrop($event, 'subject')" class="form-control"
+           id="emailSubject" placeholder="Asunto del email">
+  </div>
+
+  <div class="form-group">
+    <label for="emailContent">Mensaje</label>
+    <textarea formControlName="content" dnd-droppable (onDropSuccess)="onDrop($event, 'content')" id="emailContent"
+              class="form-control"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="emailSignature">Firma</label>
+    <textarea formControlName="signature" dnd-droppable (onDropSuccess)="onDrop($event, 'signature')"
+              class="form-control" id="emailSignature"></textarea>
+  </div>
+
+  <button [disabled]="!formIsValid() || sendingForm" type="submit" class="btn btn-primary">Guardar</button>
+</form>

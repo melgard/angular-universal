@@ -1,0 +1,57 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div class="container" *ngIf="ready">
+  <div class="row">
+    <div class="col-sm-4">
+      <app-settings-profile
+        [company]="company"
+        (onImageUpdated)="loadCompany()"
+        (onImageDeleted)="loadCompany()"
+        (onEditCompanySuccess)="loadCompany()"
+      ></app-settings-profile>
+
+      <app-settings-contact
+        [addresses]="addresses"
+        [emails]="emails"
+        [phones]="phones"
+        [website]="company.website"
+        [companyId]="company.id"
+        (onEditWebsiteSuccess)="loadCompany()"
+        (onEditEmailSuccess)="loadEmails()"
+        (onEditPhoneSuccess)="loadPhones()"
+        (onEditAddressSuccess)="loadAddresses()"
+      ></app-settings-contact>
+
+      <app-settings-privacy
+        [privacies]="privacies"
+        [companyPrivacies]="companyPrivacies"
+        [companyId]="company.id"
+      ></app-settings-privacy>
+    </div>
+
+    <div class="col-sm-8">
+      <app-settings-selectors
+        [companyId]="getCompanyId()"
+        [selectors]="selectors"
+        (onSelectorAddSuccess)="loadSelectors()"
+        (onSelectorDeleteSuccess)="loadSelectors()"
+      ></app-settings-selectors>
+    </div>
+
+    <div class="col-sm-8">
+      <app-settings-perks
+        [perks]="perks"
+        [companyPerks]="companyPerks"
+        [companyId]="company.id"
+      ></app-settings-perks>
+    </div>
+
+    <div class="col-sm-8">
+      <app-settings-fast-contact-email
+        [fastContactEmails]="fastContactEmails"
+        [companyId]="company.id"
+        (onFastContactEmailDeleteSuccess)="loadFastContactEmails()"
+        (onFastContactEmailEditSuccess)="loadFastContactEmails()"
+      ></app-settings-fast-contact-email>
+    </div>
+  </div>
+</div>

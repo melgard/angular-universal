@@ -1,0 +1,33 @@
+<div class="emails-timeline">
+  <h4>Emails de contacto rápido</h4>
+
+  <div class="well">
+    <ul>
+      <li *ngFor="let email of fastContactEmails">
+        <a (click)="openModal(email)" style="cursor: pointer"><span class="fa fa-envelope-o"></span> {{ email.title
+          }}</a>
+
+        <span class="actions pull-right">
+        <span (click)="openModal(email)" style="cursor: pointer;" class="fa fa-edit"></span>
+        <span (click)="deleteFastContactEmail(email)" style="cursor: pointer;" class="fa fa-trash"></span>
+      </span>
+      </li>
+    </ul>
+
+    <div class="text-center">
+      <a (click)="openModal()" data-toggle="modal" data-target="#email" class="btn btn-primary">Crear nuevo template de
+        email</a>
+    </div>
+  </div>
+
+
+  <p-dialog *ngIf="displayFastContactEmailModal" (onHide)="onHideModal()" [minWidth]="611" [height]="600"
+            header="Editar/Agregar Plantilla de Email" [(visible)]="displayFastContactEmailModal" [modal]="true"
+            [draggable]="false" [resizable]="false">
+    <app-fast-contact-email-modal-content
+      [companyId]="companyId"
+      [fastContactEmail]="selectedFastContactEmail"
+      (saveSuccess)="emitFastContactEmailEditSuccess()"
+    ></app-fast-contact-email-modal-content>
+  </p-dialog>
+</div>
