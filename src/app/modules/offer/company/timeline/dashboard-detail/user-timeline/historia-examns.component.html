@@ -1,0 +1,18 @@
+<article>
+  <h4 class="">{{ historia?.phase?.label }}</h4>
+  <ul>
+    <li *ngFor="let examen of examnsData;let i = index">
+      <h4><span class="mini-pin" [ngClass]="examen?.semaforo"></span> {{ examen?.phase?.label }}</h4>
+      <p>{{ examen?.date | amLocale:'es' |
+        amDateFormat:'DD[/]MM[/]YYYY' }} · {{ examen?.mensaje }}</p>
+      <hr>
+    </li>
+    <hr *ngIf="historia?.comment?.fecha_reactivacion">
+    <p *ngIf="historia?.comment?.fecha_reactivacion">
+      <span class="badge badge-default">Reactivado</span>
+    </p>
+    <li *ngIf="historia?.comment?.fecha_reactivacion">{{ historia?.comment?.fecha_reactivacion | amLocale:'es' |
+      amDateFormat:'DD[/]MM[/]YYYY' }} · {{ historia?.comment?.reactivacion }}
+    </li>
+  </ul>
+</article>

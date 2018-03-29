@@ -3,8 +3,8 @@ import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 
 
-import {Career, Parametric, ParametricPerk, Skill,} from '@app/models/index.models';
-import {API} from '@app/modules/core/api.constants';
+import {Career, Parametric, ParametricPerk, Skill} from 'app/models/index.models';
+import {API} from 'app/modules/core/api.constants';
 
 
 @Injectable()

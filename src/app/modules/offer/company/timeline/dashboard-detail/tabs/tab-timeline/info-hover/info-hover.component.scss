@@ -1,0 +1,342 @@
+
+.creditos {
+  padding-bottom: 15px;
+  h5 {
+    margin: 0;
+  }
+  .big {
+    font-size: 50px;
+    font-weight: 300;
+    margin: 5px 0;
+  }
+  hr {
+    margin: 10px 0 15px 0;
+  }
+}
+
+.numeros {
+  display: flex;
+  align-items: stretch;
+  .dato {
+    flex: 1;
+    padding: 10px;
+  }
+}
+
+.listado-postulantes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+
+  app-profile-card {
+    margin-bottom: 10px;
+    padding: 10px;
+    min-width: 280px;
+  }
+}
+
+.timeline {
+  padding: 0;
+  display: flex;
+  list-style: none;
+  li {
+    flex: 1;
+    text-align: center;
+    ul {
+      padding: 0;
+      list-style: none;
+      li {
+        margin: 10px 0;
+        position: relative;
+        height: 40px;
+        img {
+          border: 2px solid white;
+        }
+        .postulante {
+          position: absolute;
+          width: 500px;
+          display: flex;
+          opacity: 0;
+          transition: 1s;
+          background: white;
+          z-index: 999;
+          transform: translateX(-50%) translatey(100%);
+          margin-left: 50%;
+          bottom: 0;
+          border: 1px solid #ddd;
+
+          &:before {
+            width: 15px;
+            height: 15px;
+            content: "";
+            display: inline-block;
+            transform: rotate(45deg) translateX(-50%);
+            top: -2px;
+            z-index: 999;
+            background: white;
+            border-top: 1px solid #cdcdcd;
+            border-left: 1px solid #cdcdcd;
+            position: absolute;
+          }
+
+          .historia, .tile-postulante {
+            width: 50%;
+            border: none;
+            box-sizing: border-box;
+            float: left;
+            height: 100%;
+          }
+
+          .tile-postulante {
+            border-right: 1px solid #cdcdcd;
+          }
+
+          .historia {
+            text-align: left;
+            padding: 15px;
+            font-size: 12px;
+            .historial {
+              li {
+                text-align: left;
+                height: auto;
+              }
+            }
+          }
+        }
+        &:hover {
+          .postulante {
+            display: block;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.well {
+  background-color: #fff;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+.creditos {
+  padding-bottom: 15px;
+}
+
+.main-container {
+  background-color: #E9EBEE;
+  min-height: 900px;
+}
+
+.timeline2 {
+  padding: 0;
+  display: flex;
+  list-style: none;
+  li {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    .postulante {
+      position: absolute;
+      width: 500px;
+      display: none;
+      opacity: 0;
+      transition: 1s;
+      background: white;
+      z-index: 999;
+      transform: translatey(100%);
+      bottom: 0;
+      border: 1px solid #ddd;
+
+      &:before {
+        width: 15px;
+        height: 15px;
+        content: "";
+        display: inline-block;
+        transform: rotate(45deg) translateX(-50%);
+        top: -2px;
+        z-index: 999;
+        background: white;
+        border-top: 1px solid #cdcdcd;
+        border-left: 1px solid #cdcdcd;
+        position: absolute;
+      }
+
+      .historia, .tile-postulante {
+        width: 50%;
+        border: none;
+        box-sizing: border-box;
+        float: left;
+        height: 100%;
+      }
+
+      .tile-postulante {
+        border-right: 1px solid #cdcdcd;
+      }
+
+      .historia {
+        text-align: left;
+        padding: 15px;
+        font-size: 12px;
+        .historial {
+          padding: 0;
+          li {
+            justify-content: left;
+            height: auto;
+          }
+        }
+      }
+    }
+    &:hover {
+      .postulante {
+        display: block;
+        opacity: 1;
+      }
+    }
+  }
+
+  &.title {
+    p {
+      margin: 10px 0;
+      font-weight: bold;
+    }
+  }
+
+  &.flow {
+    position: relative;
+    border-bottom: 1px solid #bbb;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    &:after {
+      content: "";
+      border-top: 1px dashed #dcdcdc;
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      z-index: -1;
+    }
+
+    img {
+      border: 3px solid white;
+      position: relative;
+      box-shadow: 0 0 2px #ccc;
+    }
+
+    .pin {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #cdcdcd;
+      font-size: 14px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.mini {
+        width: 15px;
+        height: 15px;
+        font-size: 11px;
+      }
+      &.ok {
+        background: limegreen;
+      }
+      &.warning {
+        background: gold;
+      }
+      &.out {
+        background: red;
+      }
+
+      &.waiting {
+        background: orange;
+      }
+
+      &.action {
+        background: DodgerBlue;
+      }
+
+      &.absolute {
+        position: absolute;
+        top: 45px;
+      }
+    }
+
+    .pruebas {
+      display: block;
+      padding: 0;
+      li {
+        display: block;
+        text-align: left;
+        span {
+          display: inline-block;
+        }
+      }
+    }
+
+    .img-profile-tl {
+      max-width: 60px;
+    }
+
+    li {
+      &:first-child {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.modal-cv {
+  h3 {
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+  }
+  ul {
+    li {
+      margin-bottom: 20px;
+
+      h6, h4, h5 {
+        margin: 2px 0;
+      }
+
+      h5, h6 {
+        font-weight: 400;
+      }
+
+      h4 {
+        font-size: 15px;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.tile-postulante .fav {
+  position: absolute;
+  top: 5px;
+  left: 220px;
+  font-size: 20px;
+  color: #ddd;
+}
+
+.tile-postulante img {
+  width: 80px;
+  height: 80px;
+  border: 3px solid white;
+  margin: auto;
+}

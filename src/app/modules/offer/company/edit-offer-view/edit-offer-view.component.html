@@ -1,0 +1,8 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<form *ngIf="offer" [formGroup]="form">
+  <app-offer-view [offer]="offer" [offerForm]="form">
+
+    <div class="form-title">Editar aviso</div>
+
+  </app-offer-view>
+</form>

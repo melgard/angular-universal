@@ -1,0 +1,127 @@
+<div id="timeline" class="panel">
+
+
+  <ul class="timeline2 title">
+    <li><p>Postulante</p></li>
+    <li *ngFor="let phase of (timeline$ | async).phases"><p>{{ phase.label }}</p></li>
+  </ul>
+
+
+  <div *ngFor="let profile of (profiles$ | async)">
+    <ul class="timeline2 flow" *ngIf="profile?.historical?.length > 0">
+      <li> {{ profile?.fastView?.full_name }} <span class="fa fa-envelope"></span></li>
+      <li *ngFor="let phase of (timeline$ | async).phases; let i = index">
+
+        <a (click)="showPhaseModal(phase, profile, profile?.historical[i])"
+           *ngIf="(profile?.current_phase === phase?.id && (profile.historical[i].status === 'waiting' || profile.historical[i].status === 'out'))">
+          <img [src]="profile?.fastView?.image_url || noImage"
+               [title]="profile?.fastView?.full_name"
+               class="img-circle img-profile-tl">
+        </a>
+
+        <article class="postulante" *ngIf="profile.current_phase === phase.id">
+          <div class="tile-postulante">
+            <span class="ion-heart fav"></span>
+            <img [src]="profile?.fastView?.image_url || noImage" class="img-responsive img-circle">
+            <h4> {{profile?.fastView?.full_name}} </h4>
+            <hr>
+            <div class="info">
+              <p>
+                <strong>Edad:</strong>
+                {{profile?.fastView?.age}}
+              </p>
+              <p>
+                <strong>Trabaja en:</strong>
+                {{profile?.fastView?.current_work}}
+              </p>
+              <p>
+                <strong>Perfil:</strong>
+                {{profile?.fastView?.current_profile}}
+              </p>
+            </div>
+            <!--
+
+                -->
+            <div id="botones"
+                 *ngIf="(phase.name !== 'testmatch'
+            || (phase.name === 'testmatch' && profile.current_status !== 'waiting'))
+            && (i < (timeline$ | async).phases.length - 1)">
+
+              <hr>
+              <div class="actions text-center"
+                   *ngIf="profile.current_status === 'out' && phase.name !== 'testmatch'">
+                <a class="btn btn-primary"
+                   (click)="showReactivateModal(phase, profile, profile.historical[i])">Reactivar</a>
+              </div>
+
+              <div class="actions text-center" *ngIf="profile.current_status !== 'out' ">
+                <a class="btn btn-default" (click)="showPhaseModal(phase, profile, profile.historical[i], 'rechazar')">Fuera
+                  del proceso</a>
+                <a class="btn btn-primary" (click)="showPhaseModal(phase, profile, profile.historical[i], 'avanzar')">Avanzar</a>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="historia" *ngIf="i >= 1 && i < (timeline$ | async).phases?.length">
+            <ul class="historial">
+              <li *ngFor="let history of profile.historical">
+                <div *ngIf="history?.comment?.id">
+                  <strong style="margin-right: 5px;">
+                    {{ getDateValid(history) | amLocale:'es' | amDateFormat:'DD[/]MM[/]YYYY' }}
+                  </strong>
+                  · {{getLabelPhaseFromHistorical(history.phase_id)}}
+                </div>
+              </li>
+              <li>
+                <hr>
+              </li>
+              <li>
+                <a class="btn btn-default" [routerLink]="['profile', profile.id]">
+                  Ver historial completo
+                </a>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+
+        <!-- Muestra pin de está en testmatch o fue eliminado del proceso -->
+        <span
+          [ngClass]="getPin(profile?.historical[i]?.status, 'no-link', profile?.historical[i]?.is_testmatch)"></span>
+
+        <!-- Muestra pin de ok, warning o reactivated -->
+        <a *ngIf="phase.type != 3"
+           (click)="showPhaseModal(phase, profile, profile.historical[i])">
+          <span [ngClass]="getPin(profile?.historical[i]?.status, 'link')"></span>
+        </a>
+
+
+        <span *ngIf="((profile?.historical?.length -1) < i && profile?.current_status === 'out')
+        && profile?.current_phase !== phase.id "> - </span>
+
+        <span class="pin"
+              *ngIf="((profile?.historical?.length -1) < i &&
+              profile.current_status !== 'out' &&
+              phase.type != 3) && profile?.current_phase !== phase.id">
+        </span>
+
+        <ul class="text-left pruebas"
+            *ngIf="profile?.historical[i]?.status !== 'out'
+                && profile?.current_status !== 'out'
+                && (profile?.current_phase !== phase?.id || ( profile?.current_phase === phase?.id && profile?.historical[i]?.status !== 'waiting'))">
+          <li *ngFor="let sub of phase?.subPhases">
+            <small><span class="pin mini"
+                         [ngClass]="getSemaforo(profile?.historical[i]?.pruebas, sub)"></span>
+              {{ sub.label }}
+            </small>
+          </li>
+        </ul>
+
+      </li>
+    </ul>
+
+
+  </div>
+
+</div>

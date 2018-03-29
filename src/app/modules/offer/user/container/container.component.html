@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <app-offer *ngIf="offer" [offer]="offer"></app-offer>
+
+    <app-action-section *ngIf="summary" [summary]="summary"></app-action-section>
+  </div>
+</div>
+
+<app-footer></app-footer>

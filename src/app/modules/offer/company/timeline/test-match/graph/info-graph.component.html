@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let profile of data; let i = index">
+    <span class="mini-pin" [ngClass]="profile?.history?.status"></span>
+    {{profile?.fastView?.full_name || 'Sin nombre'}}
+  </li>
+</ul>

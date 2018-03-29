@@ -1,0 +1,105 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div *ngIf="postulant && !loading" class="modal-dialog modal-cv">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close blanco" data-dismiss="modal" aria-label="Close" (click)="close()">
+        <span aria-hidden="true" style="font-size: 1.8rem;">&times;</span>
+      </button>
+      <h4 class="modal-title" id="myModalLabel">{{postulant.full_name}}</h4>
+    </div>
+    <div class="modal-body">
+
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="cv">
+          <section class="row">
+            <div class="col-md-3">
+              <img [src]="postulant.image_url ||  noImage" class="img-circle img-responsive">
+            </div>
+            <div class="col-md-9">
+              <p><strong>Edad:</strong> {{postulant.age}} años</p>
+              <p><strong>Locación:</strong> {{postulant.location}}</p>
+              <hr>
+              <p><strong>Estudios:</strong> {{postulant.highest_grade_study}}</p>
+              <p><strong>Trabaja en: </strong>{{postulant.current_work}}</p>
+              <p><strong>Anterior:</strong> {{postulant.last_work}}</p>
+              <p><strong>Perfil:</strong> {{postulant.current_profile}}</p>
+              {{ postulant.rating }}
+              <app-ratings-with-stars
+                [rating]=" postulant?.calification "
+                [totalStars]="5">
+              </app-ratings-with-stars>
+
+            </div>
+
+            <article class="col-xs-12">
+              <h3>Estudios</h3>
+              <ul>
+                <li>
+                  <article>
+
+                    <h4>Licenciado en Comunicación</h4>
+                    <h5>Universidad de Buenos Aires</h5>
+                    <h6>03 · 2003 - 12 · 2009</h6>
+                  </article>
+                </li>
+
+                <li>
+                  <article>
+
+                    <h4>Licenciado en Comunicación</h4>
+                    <h5>Universidad de Buenos Aires</h5>
+                    <h6>03 · 2003 - 12 · 2009</h6>
+                  </article>
+                </li>
+              </ul>
+            </article>
+
+
+            <article class="col-xs-12">
+              <h3>Experiencia Laboral</h3>
+              <ul>
+                <li>
+                  <article>
+
+                    <h4>Atención al cliente</h4>
+                    <h5>Garbarino</h5>
+                    <h6>03 · 2003 - 12 · 2009</h6>
+                  </article>
+                </li>
+
+                <li>
+                  <article>
+
+                    <h4>Vendedor</h4>
+                    <h5>Apple Store</h5>
+                    <h6>03 · 2003 - 12 · 2009</h6>
+                  </article>
+                </li>
+              </ul>
+            </article>
+          </section>
+        </div>
+
+
+        <div role="tabpanel" class="tab-pane fade" id="history">
+          Historial
+        </div>
+
+
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" (click)="close()">Cerrar</button>
+      <button type="button" (click)="showDesbloquearPerfilModal()"
+              class="btn btn-primary">Desbloquear Perfil
+      </button>
+
+      <button *ngIf="!exist" type="button" class="btn btn-default"
+              (click)="addProfile(postulant, $event)">Agregar al timeline
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal desbloquear perfil -->

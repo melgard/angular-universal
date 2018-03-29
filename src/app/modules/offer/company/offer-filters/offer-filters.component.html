@@ -1,0 +1,101 @@
+<div class="main-container">
+  <div class="container">
+    <div class="row margintop20">
+      <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+          <div class="well" id="offer-settings">
+            <h3>Perfecciona tú búsqueda</h3>
+            <h4>Tu aviso fue publicado, encontremos al candidato ideal</h4>
+            <p>A continuación podrás marcar preferencias en cuanto a los candidatos para tú búsqueda, dichas
+              preferencias
+              no son filtros excluyentes y no serán publicados.</p>
+
+
+            <article class="pregunta">
+              <h5>¿Qué rango de edad se adapta mejor al puesto?</h5>
+              <ul class="flex">
+                <li *ngFor="let ageRange of constants.AGE_RANGES">
+                  <div class="checkbox">
+                    <label>
+                      <input type="radio" name="ageRange" [value]="ageRange.id" [(ngModel)]="offerFilter.ageRange">{{ageRange.description}}</label>
+                  </div>
+                </li>
+              </ul>
+            </article>
+
+            <article class="pregunta">
+              <h5>¿Qué sexo se adapta mejor al puesto?</h5>
+              <ul class="flex">
+                <li *ngFor="let gender of constants.GENDER">
+                  <div class="checkbox">
+                    <label>
+                      <input type="radio" name="gender" [value]="gender.id" [(ngModel)]="offerFilter.gender">{{gender.description}}
+                    </label>
+                  </div>
+                </li>
+              </ul>
+            </article>
+
+
+            <article class="pregunta">
+              <h5>Años de experiencia</h5>
+              <select class="form-control input-lg" [(ngModel)]="offerFilter.yearsOfExperience">
+                <option *ngFor="let years of constants.EXP_IN_YEARS" [value]="years.id">{{years.description}}</option>
+              </select>
+            </article>
+
+
+            <app-skills [values]="technicalSkills" [dataSource]="technicalDataSource"
+                        title="Set de competencias Técnicas" placeholder="Escribe Tus Habilidades"
+            ></app-skills>
+
+            <app-skills [values]="managementSkills" [dataSource]="managementDataSource"
+                        title="Set de competencias Management" placeholder="Escribe Tus Habilidades"
+            ></app-skills>
+
+
+            <article class="pregunta">
+              <h5>Nivel de estudios</h5>
+              <select class="form-control input-lg" id="nivelj_id" name="nivelj_id"
+                      [(ngModel)]="offerFilter.educationLevel">
+                <option *ngFor="let education of constants.EDUCATION_LEVELS" [value]="education.id">
+                  {{education.description}}
+                </option>
+              </select>
+            </article>
+
+            <article class="pregunta">
+              <h5>¿Cuál es el radio de distancia máximo?</h5>
+              <select class="form-control input-lg" [(ngModel)]="offerFilter.distanceRadius">
+                <option>Seleccionar</option>
+                <option *ngFor="let distance of constants.MAX_DISTANCE_RADIUS" [value]="distance.id">
+                  {{distance.description}}
+                </option>
+              </select>
+            </article>
+
+            <app-language-skill [dataSource]="technicalDataSource"
+                                title="¿Se necesita conocimientos de algún idioma para el puesto? ¿Cuáles?"
+                                placeholder="Comienza a escribir los idiomas"
+                                (onChange)="onSkillsChange($event)"></app-language-skill>
+
+            <article class="pregunta">
+              <h5>Período de rotación en trabajos anteriores</h5>
+              <select class="form-control input-lg" [(ngModel)]="offerFilter.rotationPeriods">
+                <option>Seleccionar</option>
+                <option *ngFor="let rotation of constants.ROTATION_PERIOD" [value]="rotation.id">
+                  {{rotation.description}}
+                </option>
+              </select>
+            </article>
+
+            <article>
+              <a class="btn btn-primary btn-lg btn-block" (click)="showPreview()">Aceptar</a>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

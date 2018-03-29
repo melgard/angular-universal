@@ -1,31 +1,38 @@
-import {OfferSearchResult} from '@app/models/search-result-offer.model';
-import {ActiveFilter} from '@app/models/filter.model';
+import {OfferSearchResult} from './search-result-offer.model';
+import {ActiveFilter} from './filter.model';
 
 export {Parametric} from './parametric.model';
 export {ParametricPerk} from './parametric-perk.model';
-
 export {Career} from './career.model';
 export {Skill} from './skill.model';
-
-
-export {Company} from '@app/models/company.model';
-export {CompanyInfo} from '@app/models/company-info.model';
-export {Selector} from '@app/models/selector.model';
-export {Email} from '@app/models/email.model';
-export {Phone} from '@app/models/phone.model';
-export {Address} from '@app/models/address.model';
-export {FastContactEmail} from '@app/models/fast-contact-email.model';
-export {FastContactEmailVariable} from '@app/models/fast-contact-email-variable.model';
-export {CreateSelector} from '@app/models/create-selector.model';
-export {SelectorToAdd} from '@app/models/selector-to-add.model';
-export {Perk} from '@app/models/perk.model';
-export {Website} from '@app/models/website.model';
-export {Privacy} from '@app/models/privacy.model';
-
-export {ActiveFilter, Filter, Value} from '@app/models/filter.model.ts';
-export {OfferSearchResult} from '@app/models/search-result-offer.model.ts';
-export {UserSearchResult} from '@app/models/search-result-user.model.ts';
-export {CompanySearchResult} from '@app/models/search-result-company.model.ts';
+export {Company} from './company.model';
+export {CompanyStat} from './company-stat.model';
+export {CompanyInfo} from './company-info.model';
+export {Selector} from './selector.model';
+export {Email} from './email.model';
+export {Phone} from './phone.model';
+export {Address} from './address.model';
+export {FastContactEmail} from './fast-contact-email.model';
+export {FastContactEmailVariable} from './fast-contact-email-variable.model';
+export {CreateSelector} from './create-selector.model';
+export {SelectorToAdd} from './selector-to-add.model';
+export {Perk} from './perk.model';
+export {Website} from './website.model';
+export {Privacy} from './privacy.model';
+export {Location} from './location.model';
+export {Hierarchy} from './hierarchy.model';
+export {ContractKind} from './contract-kind.model';
+export {CreateOffer} from './create-offer.model';
+export {Offer} from './offer.model';
+export {Timeline} from './timeline.model';
+export {TimelineProfile} from './timeline-profile.model';
+export {Postulant} from './postulant.model';
+export {Area} from './area.model';
+export {SubArea} from './subarea.model';
+export {ActiveFilter, Filter, Value} from './filter.model';
+export {OfferSearchResult} from './search-result-offer.model';
+export {UserSearchResult} from './search-result-user.model';
+export {CompanySearchResult} from './search-result-company.model';
 
 
 

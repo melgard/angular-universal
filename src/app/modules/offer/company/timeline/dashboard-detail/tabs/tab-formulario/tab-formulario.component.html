@@ -1,0 +1,97 @@
+<div class="col-md-12">
+  <div class="panel" id="timeline-config">
+    <div class="margintop20 row">
+      <div class="col-md-10 col-md-offset-1">
+        <form [formGroup]="formGroup" class="form-horizontal" (submit)="habilitarTimeline()">
+          <!-- Es testmatch
+                             <div *ngIf="phase.name === 'testmatch' && testmatchTrue === true">
+                               <div formGroupName="formGroup" class="form-group">
+                                 <label class="col-sm-3 control-label">Encargado Testmatch</label>
+                                 <div class="col-sm-9">
+                                   <input formControlName="selector"
+                                          title="ingrese un correo para buscar..."
+                                          type="email"
+                                          placeholder="Nombre del encargado"
+                                          class="form-control">
+                                 </div>
+                               </div>
+                             </div>
+                             -->
+          <div class="well">
+            <h4>Timeline</h4>
+
+            <ul [dragula]='"bag-one"' [dragulaModel]="phases" formArrayName="phases">
+
+              <li class="drag-item"
+                  [id]="phase.name"
+                  *ngFor="let phase of phases; let i = index;">
+
+                <div [formGroupName]="i">
+                  <div *ngIf="phase.subPhases.length === 0">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox"
+                               [formControlName]="phase.name"
+                               [value]="phase.value"
+                               (change)="cambiar(phase)">
+                        {{phase.label}}
+                      </label>
+                    </div>
+
+                  </div>
+
+                  <div class="pruebas" *ngIf="phase.subPhases.length > 0">
+                    <h5>{{phase.label}}</h5>
+                    <div class="array-pruebas" [formArrayName]="phase.name">
+                      <div *ngFor="let subPhase of phase.subPhases; let z = index;">
+                        <div [formGroupName]="z">
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox"
+                                     [formControlName]="subPhase.name"
+                                     [value]="subPhase.value"> {{subPhase.label}}
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </li>
+            </ul>
+            <hr>
+            <div style="list-style: none;"><a (click)="showInfoModal()" class="btn btn-default">
+              Agregar instancia</a>
+            </div>
+            <!-- Es testmatch -->
+          </div>
+          <div class="well" *ngIf="testmatchTrue === true">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Encargado Testmatch</label>
+              <div class="col-sm-9">
+                <input title="ingrese un correo para buscar..."
+                       type="email"
+                       formControlName="selector"
+                       placeholder="Nombre del encargado"
+                       class="form-control">
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="text-center" style="margin-bottom: 20px;">
+            <button type="submit"
+                    class="btn btn-primary" id="habilitar-timeline"
+                    [disabled]="!formGroup.valid">
+              Aceptar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

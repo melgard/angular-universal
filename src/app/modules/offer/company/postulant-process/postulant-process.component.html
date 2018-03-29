@@ -1,0 +1,59 @@
+<ul class="timeline2">
+  <li>Etapa 1</li>
+  <li>Etapa 2</li>
+  <li>Etapa 3</li>
+  <li>Etapa 4</li>
+  <li>Etapa 5</li>
+</ul>
+
+<ul *ngFor="let preselected of preselected" class="timeline2 flow">
+  <li><span class="pin ion-checkmark-circled ok"></span></li>
+  <li><span class="pin ion-checkmark-circled ok"></span></li>
+  <li><span class="pin ion-checkmark-circled ok"></span></li>
+  <li><span class="pin ion-checkmark-circled ok"></span></li>
+  <li>
+    <img [src]="preselected.image_url" class="w-80 img-circle">
+    <article class="postulante">
+
+      <div class="tile-postulante">
+        <span class="ion-heart fav"></span>
+        <img [src]="preselected.image_url" class="img-responsive img-circle">
+        <h4>{{preselected.full_name}}</h4>
+        <hr>
+        <div class="info">
+          <p>
+            <strong>Edad:</strong>
+            {{preselected.age}}
+          </p>
+          <p>
+            <strong>Trabaja en:</strong>
+            {{preselected.current_work}}
+          </p>
+          <p>
+            <strong>Perfil:</strong>
+            {{preselected.current_profile}}
+          </p>
+        </div>
+        <hr>
+        <div class="actions text-center">
+          <a class="btn btn-default">Fuera del proceso</a>
+          <a class="btn btn-primary">Avanzar</a>
+        </div>
+      </div>
+
+      <div class="historia">
+        <ul class="historial">
+          <li><strong>22/10</strong> · Postulación</li>
+          <li><strong>29/10</strong> · Contacto via Whatsapp</li>
+          <li><strong>30/10</strong> · Postulación</li>
+          <li>
+            <hr>
+          </li>
+          <li><a href="" class="btn btn-default">Ver historial completo</a></li>
+        </ul>
+      </div>
+    </article>
+  </li>
+</ul>
+
+

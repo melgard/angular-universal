@@ -1,0 +1,59 @@
+<ngx-loading [show]="!(offer$ | async).id"></ngx-loading>
+<div class="main-container" id="dashboard-empresa">
+  <div class="container" *ngIf="(offer$ | async).id">
+    <div class="row">
+
+
+      <app-offer-definition [offer]="offer$"
+                            (onEdit)="editOffer($event)"
+                            (onPause)="pauseOffer($event)"
+                            (onDelete)="deleteOffer($event)">
+      </app-offer-definition>
+
+      <app-timeline-tab-panel>
+
+        <app-timeline-tab title="Postulantes"
+                          [selected]="!(timeline$ | async).enabled"
+                          [badge]="(postulantes$ | async)?.length || 0"
+                          dataTarget="postulantes"
+                          cssId="postulantes">
+          <app-tab-postulantes></app-tab-postulantes>
+        </app-timeline-tab>
+        <app-timeline-tab title="Recomendados"
+                          [badge]="(recomendados$ | async)?.length  || 0"
+                          dataTarget="recomendados"
+                          cssId="recomendados">
+          <app-tab-recomendados></app-tab-recomendados>
+        </app-timeline-tab>
+        <app-timeline-tab title="Preseleccionados"
+                          [badge]="(preseleccionados$ | async)?.length  || 0"
+                          dataTarget="preseleccionados"
+                          cssId="preseleccionados">
+          <app-tab-preseleccionados></app-tab-preseleccionados>
+        </app-timeline-tab>
+        <app-timeline-tab title="Perfiles adquiridos"
+                          [badge]="(adquiridos$ | async)?.length || 0"
+                          dataTarget="adquiridos"
+                          cssId="adquiridos">
+          <app-tab-adquiridos></app-tab-adquiridos>
+        </app-timeline-tab>
+
+        <app-timeline-tab title="Habilitar Timeline" [isSpecial]="true"
+                          *ngIf="!(timeline$ | async).enabled">
+          <app-tab-formulario [offerId]="(offer$ | async)?.id"
+                              (onEnabledEvent)="habilitarTimeline($event)"></app-tab-formulario>
+        </app-timeline-tab>
+
+        <app-timeline-tab *ngIf="(timeline$ | async).enabled && timelineVisibiity"
+                          title="Timeline"
+                          [isSpecial]="true"
+                          [selected]="(timeline$ | async).enabled">
+          <app-tab-timeline (detectarCambios)="changeDetect()"></app-tab-timeline>
+        </app-timeline-tab>
+
+      </app-timeline-tab-panel>
+
+    </div>
+  </div>
+
+</div>

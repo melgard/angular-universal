@@ -1,0 +1,101 @@
+<div class="row well" *ngIf="!comment?.id">
+  <div class="col-md-3">
+    <img [src]="fastView?.image_url || noImage" class="img-circle img-responsive">
+  </div>
+  <div class="col-md-9">
+    <div class="text-right">
+      <a [routerLink]="['resume',(fastView?.user_id || -1)] ">
+        <span class="fa fa-file-text-o"></span> Ver CV
+      </a>
+
+    </div>
+    <h2>{{fastView?.full_name || 'Sin nombre'}}</h2>
+    <p><strong>Edad:</strong> {{fastView?.age }} años</p>
+    <p><strong>Locación:</strong> {{fastView?.location }} </p>
+    <hr>
+    <p><strong>Estudios:</strong> {{fastView?.highest_grade_study }}</p>
+    <p><strong>Trabaja en: </strong> {{fastView?.current_work }}</p>
+    <p><strong>Anterior:</strong> {{fastView?.last_work }}</p>
+    <p><strong>Perfil:</strong> {{fastView?.current_profile }} </p>
+    <app-ratings-with-stars
+      [rating]="fastView?.calification"
+      [totalStars]="5">
+    </app-ratings-with-stars>
+  </div>
+  <hr>
+  <form [formGroup]="formGroup">
+    <div class="form-group">
+      <label for="commentario">Comentario</label>
+      <textarea id="commentario" class="form-control" name="mensaje" #mensaje formControlName="mensaje"></textarea>
+    </div>
+    <div class="form-group">
+      <input type="hidden" formControlName="semaforo">
+    </div>
+
+    <hr>
+
+    <div class="text-center">
+      <app-traffic-light
+        [initValue]="history?.status"
+        [isEnabled]="formGroup.get('mensaje').valid"
+        [isRead_only]="comment?.id"
+        (onChange)="changeSemaforo($event)"
+        (onAlert)="traficLightAlert($event)">
+      </app-traffic-light>
+    </div>
+  </form>
+</div>
+
+<!-- Colapsable -->
+<div class="row well colapsado" *ngIf="comment?.id">
+  <div class="col-md-2">
+    <img [src]="fastView?.image_url || noImage" class="img-circle img-responsive img-60">
+  </div>
+  <div class="col-md-9">
+    <h2>{{fastView?.full_name || 'Sin nombre'}}</h2>
+    <p><strong>Edad:</strong> {{fastView?.age }} años</p>
+    <p><strong>Locación:</strong> {{fastView?.location }} </p>
+  </div>
+  <div class="col-md-1">
+    <!-- Semáforo -->
+    <app-traffic-light
+      [initValue]="history?.status"
+      [spanSize]="12"
+      [isEnabled]="formGroup.get('mensaje').valid"
+      [isRead_only]="comment?.id"
+      (onChange)="changeSemaforo($event)"
+      (onAlert)="traficLightAlert($event)">
+    </app-traffic-light>
+  </div>
+
+
+  <div class="col-md-12 text-center">
+    <a (click)="isCollapsed = !isCollapsed">
+      <i class="fa" [ngClass]="{ 'fa-chevron-down': isCollapsed, 'fa-chevron-up': !isCollapsed }"></i>
+    </a>
+  </div>
+
+  <div class="col-md-12">
+    <div class="" [collapse]="isCollapsed">
+      <hr>
+      <p><strong>Estudios:</strong> {{fastView?.highest_grade_study }}</p>
+      <p><strong>Trabaja en: </strong> {{fastView?.current_work }}</p>
+      <p><strong>Anterior:</strong> {{fastView?.last_work }}</p>
+      <p><strong>Perfil:</strong> {{fastView?.current_profile }} </p>
+      <app-ratings-with-stars
+        [rating]="fastView?.calification"
+        [totalStars]="5">
+      </app-ratings-with-stars>
+      <a [routerLink]="['resume',(fastView?.user_id || -1)] ">
+        <span class="fa fa-file-text-o"></span> Ver CV
+      </a>
+      <hr>
+
+      <div class="form-group">
+        <label>Comentario</label>
+        <p>{{comment?.mensaje}}</p>
+      </div>
+
+    </div>
+  </div>
+</div>

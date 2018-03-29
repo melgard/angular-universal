@@ -1,0 +1,134 @@
+.timeline2 {
+  padding: 0;
+  display: flex;
+  list-style: none;
+  li {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    .postulante {
+      position: absolute;
+      width: 500px;
+      display: none;
+      opacity: 0;
+      transition: 1s;
+      background: white;
+      z-index: 999;
+      transform: translatey(100%);
+      bottom: 0;
+      border: 1px solid #ddd;
+
+      &:before {
+        width: 15px;
+        height: 15px;
+        content: "";
+        display: inline-block;
+        transform: rotate(45deg) translateX(-50%);
+        top: -2px;
+        z-index: 999;
+        background: white;
+        border-top: 1px solid #cdcdcd;
+        border-left: 1px solid #cdcdcd;
+        position: absolute;
+      }
+
+      .historia, .tile-postulante {
+        width: 50%;
+        border: none;
+        box-sizing: border-box;
+        float: left;
+        height: 100%;
+      }
+
+      .tile-postulante {
+        border-right: 1px solid #cdcdcd;
+      }
+
+      .historia {
+        text-align: left;
+        padding: 15px;
+        font-size: 12px;
+        .historial {
+          padding: 0;
+          li {
+            justify-content: left;
+            height: auto;
+          }
+        }
+      }
+    }
+    &:hover {
+      .postulante {
+        display: block;
+        opacity: 1;
+      }
+    }
+  }
+
+  &.flow {
+    position: relative;
+    border-bottom: 1px solid #bbb;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    &:after {
+      content: "";
+      border-top: 1px dashed #dcdcdc;
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      z-index: -1;
+    }
+
+    img {
+      border: 3px solid white;
+      position: relative;
+      box-shadow: 0 0 2px #ccc;
+    }
+
+    .pin {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #999;
+      display: inline-block;
+      font-size: 14px;
+      color: white;
+      &.ok {
+        background: green;
+      }
+    }
+  }
+
+}
+
+.timeline2.flow img {
+  border: 3px solid white;
+  position: relative;
+  box-shadow: 0 0 2px #ccc;
+}
+
+.tile-postulante {
+  padding-bottom: 20px;
+}
+
+.tile-postulante .fav {
+  position: absolute;
+  top: 5px;
+  right: 260px;
+  font-size: 20px;
+  color: #ddd;
+}
+
+.tile-postulante img {
+  width: 80px;
+  height: 80px;
+  border: 3px solid white;
+  margin: auto;
+}
+
+.w-80 {
+  width: 80px;
+}

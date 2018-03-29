@@ -1,0 +1,50 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<article
+  class="postulante clickeable" (click)="showInfoModal()">
+
+  <div class="tile-postulante">
+
+    <span (click)="preselect($event)"
+          class="ion-heart fav"
+          [ngClass]="{'star-selected':isPreselected()}"
+          [title]="actionHeart">
+    </span>
+
+    <img [src]="postulant.image_url || noImage" class="img-responsive img-circle">
+    <app-nombre-animado
+      [nombre]="postulant.full_name"
+      [mouseOver]="mouseOverCard">
+    </app-nombre-animado>
+    <p>
+      <small>{{postulant.age}} años</small>
+    </p>
+    <p>
+      <small>
+        <small class="ion-ios-location"></small>
+        {{postulant?.location | limitTo : 20 }}
+      </small>
+    </p>
+    <hr>
+    <div class="info">
+      <p>
+        <strong>Estudios:</strong>
+        {{postulant.highest_grade_study}}
+      </p>
+      <p>
+        <strong>Trabaja en:</strong>
+        {{postulant?.current_work| limitTo : 20 }}
+      </p>
+      <p>
+        <strong>Anterior:</strong>
+        {{postulant?.last_work| limitTo : 20 }}
+      </p>
+      <p>
+        <strong>Perfil:</strong>
+        {{postulant?.current_profile | limitTo : 30 }}
+      </p>
+      <app-ratings-with-stars
+        [rating]="postulant?.calification">
+      </app-ratings-with-stars>
+    </div>
+  </div>
+</article>

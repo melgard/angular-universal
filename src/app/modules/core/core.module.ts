@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {SharedModule} from '@app/modules/shared/shared.module';
 import {ApiService, OfferService, SearchService, UtilsService} from '@app/services/index.services';
-import {ParametricsService} from '@app/modules/core/services/parametrics.service';
+import {ParametricsService} from '@app/services/parametrics.service';
 
 
 @NgModule({

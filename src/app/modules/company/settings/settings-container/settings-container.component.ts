@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 // Services
 import {CompanyService} from '@app/api/company-service/company.service';
-import {ParametricsService} from '@app/modules/core/services/parametrics.service';
+import {ParametricsService} from '@app/services/parametrics.service';
 import {
   Address,
   Company,

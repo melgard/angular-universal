@@ -1,0 +1,35 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<app-observable-error *ngIf="!loading && error"
+                      title="Ha ocurrido un error"
+                      [message]="error.message"></app-observable-error>
+
+<div class="container" *ngIf="!loading && !error">
+  <div class="row margintop20 well">
+    <div class="col-md-8 col-md-offset-2 ">
+      <div class="">
+        <ul class="timeline-user">
+          <li>
+            <app-timeline-perfil [perfil]="profile"></app-timeline-perfil>
+          </li>
+
+          <li>
+            <hr>
+          </li>
+
+          <li *ngFor="let historia of historial">
+            <div [ngSwitch]="historia.phase.type">
+              <!-- Phase comun -->
+              <app-historia-type-zero *ngSwitchCase="0" [historia]="historia"></app-historia-type-zero>
+              <!-- Phase Entrevista 1 -->
+              <app-historia-type-entrevista *ngSwitchCase="1" [historia]="historia"></app-historia-type-entrevista>
+              <!-- Phase Entrevista 2 -->
+              <app-historia-type-entrevista *ngSwitchCase="2" [historia]="historia"></app-historia-type-entrevista>
+              <!-- Phase Pruebas -->
+              <app-historia-examns *ngSwitchCase="3" [historia]="historia"></app-historia-examns>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="well">
+  <p><strong>Fecha de publicación:</strong> {{ offer?.date | amLocale:'es' | amDateFormat:'DD [de] MMMM [de] YYYY' }}
+  </p>
+  <p><strong>Publicado por:</strong> {{ offer?.getPublisher() }}</p>
+  <p><strong>Empresa:</strong> {{ offer?.getGroupName() }}</p>
+  <hr>
+  <a class="btn btn-block btn-primary" (click)="Edit(offer)">Editar</a>
+  <div class="row margin-top-15">
+    <div class="col-md-6"><a (click)="Pause(offer)" class="btn btn-block btn-success">Pausar</a></div>
+    <div class="col-md-6"><a (click)="Delete(offer)" class="btn btn-block btn-danger">Eliminar</a></div>
+  </div>
+</div>

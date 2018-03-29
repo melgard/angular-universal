@@ -13,7 +13,7 @@ export const routes: Routes = [
       // {path: 'signup', loadChildren: 'app/modules/signup/signup.module#SignupModule'},
       // {path: 'company', loadChildren: 'app/modules/company/company.module#CompanyModule'},
       {path: 'list', loadChildren: 'app/modules/list/list.module#ListModule'},
-      // {path: 'offer', loadChildren: 'app/modules/offer/offer.module#OfferModule'},
+      //{path: 'offer', loadChildren: 'app/modules/offer/offer.module#OfferModule'},
       // {path: 'wall', loadChildren: 'app/modules/wall/wall.module#WallModule'},
     ]
   }

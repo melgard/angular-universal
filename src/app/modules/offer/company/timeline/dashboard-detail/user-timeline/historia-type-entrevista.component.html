@@ -1,0 +1,67 @@
+<article>
+  <h4 class="">{{ historia?.phase?.label }}</h4>
+  <ul>
+    <li>{{ historia?.comment?.fecha | amLocale:'es' | amDateFormat:'DD[/]MM[/]YYYY' }} · Entrevistado por Juan Perez
+    </li>
+    <ul>
+      <li *ngIf="historia?.comment?.obs_inicial">
+        <h5>Observaciones iniciales sobre el postulante</h5>
+        <p>{{ historia?.comment?.obs_inicial }}</p>
+      </li>
+
+      <li *ngIf="historia?.comment?.nivel_socio_cultural">
+        <h5>Nivel socio-cultural</h5>
+        <p>{{ historia?.comment?.nivel_socio_cultural }}</p>
+      </li>
+
+      <li *ngIf="historia?.comment?.formacion">
+        <h5>Formación</h5>
+        <p>{{ historia?.comment?.formacion }}</p>
+      </li>
+
+      <li *ngIf="historia?.comment?.historia_laboral">
+        <h5>Historia Laboral</h5>
+        <p>{{ historia?.comment?.historia_laboral }}</p>
+      </li>
+
+      <li *ngIf="historia?.comment?.logros">
+        <h5>Logros</h5>
+        <p>{{ historia?.comment?.logros }}</p>
+      </li>
+
+      <li *ngIf="historia?.comment?.esquema_compensacion">
+        <h5>Esquema de compensación</h5>
+        <p>{{ historia?.comment?.esquema_compensacion }}</p>
+      </li>
+
+      <li *ngIf="historia?.comment?.disposicion_cambio">
+        <h5>Disposición al cambio</h5>
+        <p>{{ historia?.comment?.disposicion_cambio }}</p>
+      </li>
+
+      <li *ngIf="historia?.comment?.conclusion">
+        <h5>Conclusión</h5>
+        <p>{{ historia?.comment?.conclusion }}</p>
+      </li>
+
+      <li *ngIf="historia?.comment?.consolidado">
+        <h5>Consolidado</h5>
+        <p>{{ historia?.comment?.consolidado }}</p>
+      </li>
+
+      <li *ngIf="historia?.comment?.mensaje">
+        <h5>Mensaje</h5>
+        <p>{{ historia?.comment?.mensaje }}</p>
+      </li>
+
+    </ul>
+    <hr *ngIf="historia?.comment?.fecha_reactivacion">
+    <p *ngIf="historia?.comment?.fecha_reactivacion">
+      <span class="badge badge-default">Reactivado</span>
+    </p>
+    <li *ngIf="historia?.comment?.fecha_reactivacion">{{ historia?.comment?.fecha_reactivacion | amLocale:'es' |
+      amDateFormat:'DD[/]MM[/]YYYY' }} · {{ historia?.comment?.reactivacion }}
+    </li>
+
+  </ul>
+</article>

@@ -1,0 +1,151 @@
+<!-- Modal entrevista -->
+
+<ngx-loading [show]="loading"></ngx-loading>
+<div class="modal-dialog">
+  <form class="form-horizontal" [formGroup]="formGroup">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close blanco" data-dismiss="modal" aria-label="Close" (click)="close()">
+          <span aria-hidden="true" style="font-size: 1.8rem;">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">
+          {{ phase?.label }}
+          <span *ngIf="profile?.current_status === 'reactivated'"
+                class="badge badge-danger pull-right" style="margin-right: 25px;">Perfil Reactivado</span>
+        </h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-group">
+          <label for="fecha" class="col-sm-3 control-label">Fecha</label>
+          <div class="col-sm-4">
+            <input type="date"
+                   class="form-control"
+                   id="fecha"
+                   formControlName="fecha">
+          </div>
+          <label for="hora" class="col-sm-2 control-label">Hora</label>
+          <div class="col-sm-3">
+            <input type="time"
+                   class="form-control"
+                   id="hora"
+                   formControlName="hora">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Observaciones iniciales sobre el postulante</label>
+          <div class="col-sm-9">
+            <textarea class="form-control"
+                      formControlName="obs_inicial"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Nivel socio-cultural</label>
+          <div class="col-sm-9">
+            <textarea class="form-control"
+                      formControlName="nivel_socio_cultural"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Formación</label>
+          <div class="col-sm-9">
+            <textarea class="form-control"
+                      formControlName="formacion"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Historia Laboral</label>
+          <div class="col-sm-9">
+            <textarea class="form-control"
+                      formControlName="historia_laboral"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Logros</label>
+          <div class="col-sm-9">
+            <textarea class="form-control"
+                      formControlName="logros"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Esquema de compensación</label>
+          <div class="col-sm-9">
+            <textarea class="form-control"
+                      formControlName="esquema_compensacion"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Disposición al cambio</label>
+          <div class="col-sm-9">
+            <textarea class="form-control"
+                      formControlName="disposicion_cambio"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Conclusión</label>
+          <div class="col-sm-9">
+            <textarea class="form-control"
+                      formControlName="conclusion"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group" *ngIf="primarEntrevista?.fecha_reactivacion">
+          <label class="col-sm-3 control-label">Reactivacion Primer Entrevista</label>
+          <div class="col-sm-9">
+            <textarea class="form-control"
+                      formControlName="reactivacion_uno"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Consolidado</label>
+          <div class="col-sm-9">
+            <textarea class="form-control"
+                      formControlName="consolidado"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group" *ngIf="action === 'reactivate' || history?.status === 'reactivated'">
+          <label class="col-sm-3 control-label">Reactivacion</label>
+          <div class="col-sm-9">
+            <textarea class="form-control"
+                      formControlName="reactivacion_dos"></textarea>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer" *ngIf="onlyView">
+        <button type="button" (click)="reactivateProfile()" class="btn btn-primary"
+                *ngIf="action === 'reactivate'">Reactivar Perfil
+        </button>
+        <button type="button"
+                (click)="close()"
+                class="btn btn-default pull-right">Cerrar
+        </button>
+      </div>
+      <div class="modal-footer" *ngIf="!onlyView">
+        <button type="button"
+                (click)="SaveOrUpdate('ok')"
+                class="btn btn-success" *ngIf="!action || action == 'avanzar'">Avanzar
+        </button>
+        <button type="button"
+                (click)="SaveOrUpdate('warning')"
+                class="btn btn-warning" *ngIf="!action || action == 'avanzar'">Avanzar con warning
+        </button>
+        <button type="button"
+                (click)="SaveOrUpdate('out')"
+                class="btn btn-danger" *ngIf="!action || action == 'rechazar'">Rechazar
+        </button>
+      </div>
+    </div>
+
+  </form>
+</div>

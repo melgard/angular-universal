@@ -1,0 +1,14 @@
+<div id="adquiridos">
+  <div class="listado-postulantes panel">
+    <app-profile-card
+      *ngFor="let profile of profiles$ | async"
+      [postulant]="profile"
+      [title]="profile.full_name"
+    ></app-profile-card>
+    <app-sin-resultados
+      *ngIf="(profiles$| async)?.length===0"
+      title="Perfiles Adquiridos"></app-sin-resultados>
+  </div>
+</div>
+
+

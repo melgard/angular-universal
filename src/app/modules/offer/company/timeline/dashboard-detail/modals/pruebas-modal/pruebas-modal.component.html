@@ -1,0 +1,41 @@
+<div class="modal-dialog">
+  <form class="form-horizontal" [formGroup]="formGroup" (submit)="onSubmit()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close blanco" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="font-size: 1.8rem;">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Pruebas</h4>
+      </div>
+      <div class="modal-body" formArrayName="pruebas"
+           *ngFor="let item of pruebas.controls; let i = index;">
+
+        <div class="form-group" [formGroupName]="i">
+          <label class="col-sm-2 control-label"> {{phase?.subPhases[i]?.label}} </label>
+          <div class="col-sm-7">
+            <textarea formControlName="mensaje" class="form-control"></textarea>
+            <input type="hidden" formControlName="semaforo" class="form-control">
+          </div>
+
+          <app-traffic-light
+            [initValue]="item.get('semaforo').value"
+            [isEnabled]="true"
+            (onChange)="onChangeSemaforo($event, formGroup.get('pruebas').controls[i])">
+          </app-traffic-light>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary pull-left">Guardar</button>
+        <button type="button" (click)="onSubmit('ok')"
+                [disabled]="!formGroup.valid" class="btn btn-success">Avanzar
+        </button>
+        <button type="button" (click)="onSubmit('warning')"
+                [disabled]="!formGroup.valid" class="btn btn-warning">Avanzar con warning
+        </button>
+        <button type="button" (click)="onSubmit('out')"
+                [disabled]="!formGroup.valid" class="btn btn-danger">Rechazar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

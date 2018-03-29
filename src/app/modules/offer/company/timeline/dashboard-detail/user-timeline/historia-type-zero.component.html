@@ -1,0 +1,15 @@
+<article>
+  <h4 class="">{{ historia.phase.label }}</h4>
+  <ul>
+    <li>{{ historia?.comment?.fecha | amLocale:'es' | amDateFormat:'DD[/]MM[/]YYYY' }} · {{ historia?.comment?.mensaje
+      }}
+    </li>
+    <hr *ngIf="historia?.comment?.fecha_reactivacion">
+    <p *ngIf="historia?.comment?.fecha_reactivacion">
+      <span class="badge badge-default">Reactivado</span>
+    </p>
+    <li *ngIf="historia?.comment?.fecha_reactivacion">{{ historia?.comment?.fecha_reactivacion | amLocale:'es' |
+      amDateFormat:'DD[/]MM[/]YYYY' }} · {{ historia?.comment?.reactivacion }}
+    </li>
+  </ul>
+</article>

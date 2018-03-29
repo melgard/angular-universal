@@ -1,0 +1,29 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div class="main-container">
+  <div class="container">
+    <div class="row margintop20">
+      <div *ngIf="offer" class="col-lg-12">
+
+        <div class="well">
+          <h2>{{offer.title}}</h2>
+          <h5>{{offer.getGroupName()}}</h5>
+          <small>Publicado el {{ offer.date | amLocale:'es' | amDateFormat:'DD [de] MMMM [de] YYYY' }}</small>
+          <p>
+            {{offer.body}}
+          </p>
+          <p><strong>Zona de trabajo: </strong>{{showZone(offer)}}</p>
+          <p><strong>Nivel Jerárquico: </strong>{{showHierachyLevel(offer)}}</p>
+          <p><strong>Tipo de puesto: </strong>{{showContractKind(offer)}}</p>
+          <!--<p><strong *ngIf="offer.cluster">Área: </strong>{{showArea(offer)}}</p>-->
+          <hr>
+          <a class="btn btn-default" (click)="editOffer()">Editar anuncio</a>
+          <a class="btn btn-default" (click)="saveOffer()">Guardar</a>
+          <a class="btn btn-primary" (click)="saveAndPublishOffer()">Guardar y publicar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+

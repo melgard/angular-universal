@@ -1,0 +1,20 @@
+<div *ngIf="offer | async">
+
+  <main class="col-xs-12 col-md-8">
+    <h1>{{ (offer | async).title }}</h1>
+    <p>{{ (offer | async).body }}</p>
+  </main>
+
+  <aside *ngIf="(offer | async).id" class="col-md-4 margin-top-30">
+    <app-timeline-offer-data-management
+      [offer]="offer | async"
+      (onEdit)="editOffer($event)"
+      (onPause)="pauseOffer($event)"
+      (onDelete)="deleteOffer($event)">
+    </app-timeline-offer-data-management>
+  </aside>
+
+  <div class="col-xs-12">
+    <hr>
+  </div>
+</div>

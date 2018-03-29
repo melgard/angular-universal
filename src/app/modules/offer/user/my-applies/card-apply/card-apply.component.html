@@ -1,0 +1,56 @@
+<article class="well postulacion">
+
+  <div class="empresa">
+
+    <div class="logo">
+      <img [src]="apply?.companyImageUrl"
+           class="img-responsive">
+    </div>
+    <div class="nombre">
+      <h2>{{ apply?.offerTitle }}</h2>
+      <h4>{{ apply?.companyName }}</h4>
+    </div>
+  </div>
+  <h5>Fecha de aplicación: {{ apply?.applyDate | amLocale:'es' | amDateFormat:'DD[/]MM[/]YYYY' }}</h5>
+
+  <!-- Proceso timelien habilitado -->
+  <div *ngIf="apply?.phases?.length > 0">
+    <h6>Última instancia: {{ apply?.lastPhase }}</h6>
+    <ul class="proceso">
+      <li *ngFor="let phase of apply?.phases; let i = index"
+          [ngClass]="getStatus(phase)">
+        <span>  {{phase.label}}  </span>
+        <!--
+        <span *ngIf="apply?.profile?.historial[i]?.date">
+          {{ apply?.profile?.historial[i]?.date | amLocale:'es' | amDateFormat:'DD[·]MM[:]' }}
+          {{phase}}
+        </span>
+        <span *ngIf="!apply?.profile?.historial[i]?.date">
+          {{phase}}
+        </span>
+        -->
+      </li>
+      <!--
+      <li *ngFor="let phase of apply?.phases; let i = index"
+          [ngClass]="{'ok': (apply?.profile?.historial[i]?.status === 'ok'
+          || apply?.profile?.historial[i]?.status === 'warning' ),
+          'waiting': (apply?.profile?.historial[i]?.status === 'waiting')}">
+        <span *ngIf="apply?.profile?.historial[i]?.date"> {{ apply?.profile?.historial[i]?.date | amLocale:'es' | amDateFormat:'DD[·]MM[:]' }} {{phase}}</span>
+        <span *ngIf="!apply?.profile?.historial[i]?.date"> {{phase}}</span>
+      </li>
+      -->
+    </ul>
+  </div>
+
+
+  <!-- Proceso timelien no habilitado -->
+  <div *ngIf="apply?.phases?.length === 0" style="margin-top: 38.5px;">
+    <h5 class="text-center"><strong>El proceso aun no comienza.</strong></h5>
+  </div>
+  <footer>
+    <ul class="menu">
+      <li>Búsquedas similares</li>
+      <li>Comparativa</li>
+    </ul>
+  </footer>
+</article>

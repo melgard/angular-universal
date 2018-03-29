@@ -4,7 +4,7 @@ import {Response} from '@angular/http';
 import {Company} from '@app/models/company.model';
 import {Parametric} from '@app/models/parametric.model';
 import {CompanyService} from '@app/api/company-service/company.service';
-import {ParametricsService} from '@app/modules/core/services/parametrics.service';
+import {ParametricsService} from '@app/services/parametrics.service';
 
 
 @Component({

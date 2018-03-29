@@ -1,0 +1,27 @@
+.modal-cv {
+  h3 {
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+  }
+  ul {
+    li {
+      margin-bottom: 20px;
+
+      h6, h4, h5 {
+        margin: 2px 0;
+      }
+
+      h5, h6 {
+        font-weight: 400;
+      }
+
+      h4 {
+        font-size: 15px;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

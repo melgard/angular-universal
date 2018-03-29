@@ -1,0 +1,22 @@
+<section class="col-xs-12">
+  <div class="row">
+    <nav class="col-md-12">
+      <ul class="nav nav-tabs" id="myTabs" *ngIf="tabs">
+        <li *ngFor="let tab of tabs"
+            role="presentation"
+            [ngClass]="{active:tab.selected}"
+            (click)="selectTab(tab)"
+            [id]="tab.cssId">
+          <a [attr.data-target]="tab.dataTarget" class="menu">
+            <span *ngIf="!tab.isSpecial">{{tab.title}}</span>
+            <span class="btn btn-primary btn-xs" *ngIf="tab.isSpecial">{{tab.title}}</span>
+            <span class="badge" *ngIf="tab.badge"> {{tab.badge}} </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="col-md-12">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</section>

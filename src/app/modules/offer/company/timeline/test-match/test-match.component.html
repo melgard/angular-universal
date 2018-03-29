@@ -1,0 +1,57 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div class="container margintop20">
+  <div class="row" *ngIf="!loading && !error">
+    <h3>{{offer?.title}}
+      <small>{{data?.length}} postulantes</small>
+      <button class="pull-right btn btn-primary" (click)="refresh(true)"><i class="fa fa-refresh"></i> Actualizar
+      </button>
+    </h3>
+
+    <p>Fecha: {{offer?.date | amLocale:'es' | amDateFormat:'DD[/]MM[/]YYYY' }} · <strong>
+      {{offer?.getStatus()}} </strong></p>
+
+    <div *ngIf="data?.length > 0" class="well">
+      <h5>Clasificación de postulantes</h5>
+
+      <!-- Gráfico -->
+      <div class="row">
+        <div class="col-md-8">
+          <app-graph [chartsData]="chartsData"></app-graph>
+        </div>
+        <div class="col-md-4">
+          <app-info-graph [data]="data"></app-info-graph>
+        </div>
+      </div>
+
+    </div>
+
+    <main *ngIf="data?.length > 0" class="col-md-8 col-md-offset-2">
+      <section>
+        <div class="form-group">
+          <input class="form-control"
+                 name="buscar"
+                 [(ngModel)]="buscar"
+                 type="text"
+                 placeholder="Buscar postulante...">
+        </div>
+      </section>
+
+      <section *ngFor="let dat of (data | postulantes:buscar); let i = index">
+        <app-match-postulante
+          [offer]="offer"
+          [fastView]="dat?.fastView"
+          [history]="dat?.history"
+          [comment]="dat?.history?.comment"
+          (refrescar)="refresh($event)">
+        </app-match-postulante>
+      </section>
+    </main>
+
+    <div *ngIf="data?.length === 0" class="well">
+      <h4>Aún no tienes postulantes para evaluar.</h4>
+      <hr>
+      <p>Deberás esperar que el selector te envíe los perfiles.</p>
+    </div>
+
+  </div>
+</div>

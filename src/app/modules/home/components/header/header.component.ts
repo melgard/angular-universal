@@ -62,7 +62,8 @@ export class HeaderComponent {
   onDeleteAutocompleteInput() {
     this.locationFilter = null;
     this.sublocationFilter = null;
-    (<HTMLInputElement>document.getElementById('search_places')).value = '';
+    // TODO Error Angular Universal
+    //(<HTMLInputElement>document.getElementById('search_places')).value = '';
   }
 
   private extractLocationType(location, kind) {

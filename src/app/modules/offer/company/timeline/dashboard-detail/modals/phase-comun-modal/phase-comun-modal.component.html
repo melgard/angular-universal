@@ -1,0 +1,51 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close blanco" data-dismiss="modal" aria-label="Close" (click)="close()">
+        <span aria-hidden="true" style="font-size: 1.8rem;">&times;</span>
+      </button>
+      <h4 class="modal-title" id="myModalLabel">{{ phase?.label }}
+        <span *ngIf="profile?.current_status === 'reactivated'"
+              class="badge badge-danger pull-right" style="margin-right: 25px;">Perfil Reactivado</span>
+      </h4>
+    </div>
+    <div class="modal-body" *ngIf="phase?.name === 'testmatch' && history?.status === 'waiting'">
+
+      <h4>
+        Aguardando por la definición del encargado del Test Match.
+      </h4>
+
+    </div>
+
+    <div class="modal-body"
+         *ngIf="(phase?.name !== 'testmatch')  || (phase?.name === 'testmatch' && history?.status !== 'waiting')">
+      <form [formGroup]="formGroup">
+        <div class="form-group">
+          <label>Dejar comentario</label>
+          <textarea rows="15" class="form-control" formControlName="comment"></textarea>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-footer"
+         *ngIf="(!history?.status || history?.status === 'waiting') && phase?.name !== 'testmatch'">
+      <button (click)="SaveOrUpdate('ok')" class="btn btn-success"
+              [disabled]="!formGroup.valid" *ngIf="!action || action === 'avanzar'">Avanzar
+      </button>
+      <button (click)="SaveOrUpdate('warning')" class="btn btn-warning"
+              [disabled]="!formGroup.valid" *ngIf="!action || action === 'avanzar'">Avanzar con warning
+      </button>
+      <button (click)="SaveOrUpdate('out')" class="btn btn-danger"
+              [disabled]="!formGroup.valid" *ngIf="!action || action === 'rechazar'">Rechazar
+      </button>
+    </div>
+
+    <div class="modal-footer" *ngIf="(history?.status && history?.status !== 'waiting') || phase?.name === 'testmatch'">
+      <button (click)="reactivateProfile()" class="btn btn-warning"
+              *ngIf="action === 'reactivate'">Reactivar Perfil
+      </button>
+      <a (click)="close()" class="btn btn-default">Cerrar</a>
+    </div>
+
+  </div>
+</div>

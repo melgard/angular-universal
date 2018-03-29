@@ -1,0 +1,35 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div class="main-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Gestión de búsqueda</h3>
+      </div>
+
+      <div class="col-sm-4 col-sm-offset-4">
+        <div class="well text-center creditos">
+          <h5>Créditos disponibles</h5>
+          <p class="big">{{getCredits()}}</p>
+          <hr>
+
+          <a class="btn btn-primary bt-block">Comprar créditos</a>
+        </div>
+      </div>
+    </div>
+    <section class="row numeros">
+      <app-stat class="dato" [stat]="stat" *ngFor="let stat of stats"></app-stat>
+    </section>
+
+    <section>
+      <div class="row">
+        <div class="col-xs-12 text-center">
+          <hr>
+          <a [routerLink]="['/offer/new',groupId]" class="btn btn-success btn-lg text-uppercase">Crear anuncio</a>
+          <hr>
+        </div>
+      </div>
+      <app-offers-table [offers]="offers"></app-offers-table>
+    </section>
+
+  </div>
+</div>

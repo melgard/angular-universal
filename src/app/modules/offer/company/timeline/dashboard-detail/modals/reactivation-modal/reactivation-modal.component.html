@@ -1,0 +1,29 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close blanco" data-dismiss="modal" aria-label="Close" (click)="close()">
+        <span aria-hidden="true" style="font-size: 1.8rem;">&times;</span>
+      </button>
+      <h4 class="modal-title" id="myModalLabel">Reactivar Perfil
+        <span *ngIf="profile?.current_status === 'reactivated'"
+              class="badge badge-danger pull-right" style="margin-right: 25px;">Perfil Reactivado</span>
+      </h4>
+    </div>
+
+    <div class="modal-body">
+      <form [formGroup]="formGroup">
+        <div class="form-group">
+          <label for="comment">Dejar comentario</label>
+          <textarea id="comment" rows="15" class="form-control" formControlName="comment"></textarea>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-footer">
+      <button (click)="reactivateProfile()" class="btn btn-warning">Reactivar Perfil
+      </button>
+      <a (click)="close()" class="btn btn-default">Cerrar</a>
+    </div>
+
+  </div>
+</div>

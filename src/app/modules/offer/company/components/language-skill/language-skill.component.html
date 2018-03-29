@@ -1,0 +1,52 @@
+<article class="pregunta">
+  <h5>¿Se necesita conocimientos de algún idioma para el puesto? ¿Cuáles?</h5>
+  <input id="typeahead-format" type="text" class="form-control" name="model" #chipContent [(ngModel)]="text"
+         [ngbTypeahead]="search"
+         typeahead-editable="false" placeholder="Escribe Tus Habilidades"
+         (selectItem)="$event.preventDefault(); addChip($event.item)"/>
+  <div>
+    <div class="table-list">
+      <ul class="table">
+
+        <li *ngFor="let value of values; let i = index">
+          <ul>
+            <li class="large">
+              <p class="text-left">
+                <strong>{{value}}</strong>
+              </p>
+            </li>
+            <li>
+              <div class="radio">
+                <label>
+                  <input type="radio" [name]="i" [id]="i" value="0" [(ngModel)]="result[value]"
+                         (change)="emitValueChange()"> Básico
+                </label>
+              </div>
+            </li>
+            <li>
+              <div class="radio">
+                <label>
+                  <input type="radio" [name]="i" [id]="i" value="1" [(ngModel)]="result[value]"
+                         (change)="emitValueChange()"> Intermedio
+                </label>
+              </div>
+            </li>
+
+            <li>
+              <div class="radio">
+                <label>
+                  <input type="radio" [name]="i" [id]="i" value="2" [(ngModel)]="result[value]"
+                         (change)="emitValueChange()"> Avanzado
+                </label>
+              </div>
+            </li>
+
+            <li class="mini">
+              <a (click)="remove(i)"><span class="glyphicon glyphicon-remove"></span></a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</article>

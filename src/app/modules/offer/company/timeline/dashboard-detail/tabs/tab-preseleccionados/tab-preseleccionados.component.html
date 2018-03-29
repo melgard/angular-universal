@@ -1,0 +1,12 @@
+<div id="preseleccionados">
+  <div class="listado-postulantes panel">
+    <app-profile-card
+      *ngFor="let profile of preselectos$ | async"
+      [postulant]="profile"
+      [title]="profile.full_name">
+    </app-profile-card>
+    <app-sin-resultados
+      *ngIf="(preselectos$| async)?.length==0"
+      title="Perfiles Preseleccionados"></app-sin-resultados>
+  </div>
+</div>

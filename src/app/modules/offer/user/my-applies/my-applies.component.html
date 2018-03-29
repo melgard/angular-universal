@@ -1,0 +1,238 @@
+<ngx-loading [show]="(applies$| async) === false"></ngx-loading>
+<div class="container" id="my-applies">
+  <div class="row">
+    <main class="col-xs-12">
+      <div class="header margintop20">
+        <h1>Mis postulaciones</h1>
+        <div>
+          <label>
+            <small>Ordenar por:</small>
+          </label>
+          <select name="kindSort"
+                  [(ngModel)]="kindSort"
+                  class="form-control input-xs"
+                  (change)="loadMore($event)">
+            <option *ngFor="let op of kindOptionsSort" [ngValue]="op.name">
+              {{ op.label }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="row margintop20">
+        <div class="col-md-4" *ngFor="let apply of applies$ | async">
+          <app-card-apply [apply]="apply"></app-card-apply>
+        </div>
+      </div>
+      <div class="col-md-12"
+           style="text-align:center; padding: 50px;">
+        <hr>
+        <h4><em>
+          <small>No hay más registros.</small>
+        </em></h4>
+      </div>
+
+    </main>
+  </div>
+</div>
+<!--
+<div class="container" id="my-applies">
+  <div class="row">
+    <main class="col-xs-12">
+
+
+      <div class="row margintop20">
+        <div class="col-md-4">
+          <article class="well postulacion">
+
+            <div class="empresa">
+              <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Coca-Cola_bottle_cap.svg/163px-Coca-Cola_bottle_cap.svg.png"
+                     class="img-responsive">
+              </div>
+              <div class="nombre">
+                <h2>Contador Jr.</h2>
+                <h4>Coca-Cola</h4>
+              </div>
+            </div>
+            <h5>Fecha de aplicación: 10/10/2017</h5>
+            <h6>Última instancia: Primer entrevista</h6>
+
+            <ul class="proceso">
+              <li class="ok"><span>10·12: En análisis curricular</span></li>
+              <li class="en-curso"><span>12·12: Primera entrevista</span></li>
+              <li><span>Segunda entrevista</span></li>
+              <li><span>Examenes preocupacionales</span></li>
+              <li><span>Instancia técnica</span></li>
+              <li><span>Ingresado</span></li>
+            </ul>
+
+            <footer>
+              <ul class="menu">
+                <li>Búsquedas similares</li>
+                <li>Comparativa</li>
+              </ul>
+            </footer>
+          </article>
+        </div>
+
+
+        <div class="col-md-4">
+          <article class="well postulacion">
+
+            <div class="empresa">
+              <div class="logo">
+                <img src="https://dj4i04i24axgu.cloudfront.net/common/smart-banner-logos/garbarino/garbalogo.png"
+                     class="img-responsive">
+              </div>
+              <div class="nombre">
+                <h2>Desarrollador Java Jr.</h2>
+                <h4>Garbarino</h4>
+              </div>
+            </div>
+            <h5>Fecha de aplicación: 10/10/2017</h5>
+            <h6>Última instancia: Instancia técnica</h6>
+
+            <ul class="proceso">
+              <li class="ok"><span>10·12: En análisis curricular</span></li>
+              <li class="ok"><span>12·12: Primera entrevista</span></li>
+              <li class="ok"><span>Segunda entrevista</span></li>
+              <li class="ok"><span>Examenes preocupacionales</span></li>
+              <li class="en-curso"><span>Instancia técnica</span></li>
+              <li><span>Ingresado</span></li>
+            </ul>
+
+            <footer>
+              <ul class="menu">
+                <li>Búsquedas similares</li>
+                <li>Comparativa</li>
+              </ul>
+            </footer>
+          </article>
+        </div>
+
+
+        <div class="col-md-4">
+          <article class="well postulacion">
+
+            <div class="empresa">
+              <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Despegar_logo.png"
+                     class="img-responsive">
+              </div>
+              <div class="nombre">
+                <h2>Diseñador UX/UI</h2>
+                <h4>Despegar.com</h4>
+              </div>
+            </div>
+            <h5>Fecha de aplicación: 10/10/2017</h5>
+            <h6>Última instancia: Examenes preocupacionales</h6>
+
+            <ul class="proceso">
+              <li class="ok"><span>10·12: En análisis curricular</span></li>
+              <li class="ok"><span>12·12: Primera entrevista</span></li>
+              <li class="ok"><span>Segunda entrevista</span></li>
+              <li class="en-curso"><span>Examenes preocupacionales</span></li>
+              <li><span>Instancia técnica</span></li>
+              <li><span>Ingresado</span></li>
+            </ul>
+
+            <footer>
+              <ul class="menu">
+                <li>Búsquedas similares</li>
+                <li>Comparativa</li>
+              </ul>
+            </footer>
+          </article>
+        </div>
+
+
+        <div class="col-md-4">
+          <article class="well postulacion">
+
+            <div class="empresa">
+              <div class="logo">
+                <img src="https://media.glassdoor.com/sqll/3541/sony-squarelogo-1437758802584.png"
+                     class="img-responsive">
+              </div>
+              <div class="nombre">
+                <h2>Vendedor</h2>
+                <h4>Sony Store</h4>
+              </div>
+            </div>
+            <h5>Fecha de aplicación: 10/10/2017</h5>
+            <h6>Última instancia: Primer entrevista</h6>
+
+            <ul class="proceso">
+              <li class="ok"><span>10·12: En análisis curricular</span></li>
+              <li class="en-curso"><span>12·12: Primera entrevista</span></li>
+              <li><span>Segunda entrevista</span></li>
+              <li><span>Examenes preocupacionales</span></li>
+              <li><span>Instancia técnica</span></li>
+              <li><span>Ingresado</span></li>
+            </ul>
+
+            <footer>
+              <ul class="menu">
+                <li>Búsquedas similares</li>
+                <li>Comparativa</li>
+              </ul>
+            </footer>
+          </article>
+        </div>
+
+
+      </div>
+      <!-- <div class="table-list">
+          <div class="table select">
+              <ul class="title">
+                  <li><p>Fecha <span class="fa fa-caret-down"></span></p></li>
+                  <li><p>Empresa <span class="fa fa-caret-down"></span></p></li>
+                  <li class="large"><p>Postulación</p></li>
+                  <li><p>Último update <span class="fa fa-caret-down"></span></p></li>
+                  <li><p>Etapa <span class="fa fa-caret-down"></span></p></li>
+                  <li><p>Estado <span class="fa fa-caret-down"></span></p></li>
+              </ul>
+
+              <ul data-toggle="modal" data-target="#myModal">
+                  <li><p></span></p></li>
+                  <li><p>Coca-Cola </span></p></li>
+
+                  <li><p>10/10/2017 </span></p></li>
+                  <li><p>Primer entrevista</span></p></li>
+                  <li><p>
+                      <span class="semaforo mini">
+                          <span class="ok on"></span>
+                      </span>
+                      En proceso</p></li>
+              </ul>
+
+              <ul>
+                  <li><p>08/10/2017 </span></p></li>
+                  <li><p>Siemens </span></p></li>
+                  <li class="large"><p>Administrador Contable</p></li>
+                  <li><p>10/10/2017 </span></p></li>
+                  <li><p>Preocupacional</span></p></li>
+                  <li><p>
+                      <span class="semaforo mini">
+                          <span class="ok on"></span>
+                      </span>
+                      En proceso</p></li>
+              </ul>
+
+              <ul>
+                  <li><p>08/10/2017 </span></p></li>
+                  <li><p>Clarín </span></p></li>
+                  <li class="large"><p>Administrador Contable</p></li>
+                  <li><p>10/10/2017 </span></p></li>
+                  <li><p>Psicotécnico</span></p></li>
+                  <li><p>
+                      <span class="semaforo mini">
+                          <span class="out on"></span>
+                      </span>
+                      Finalizada</p></li>
+              </ul>
+          </div>
+      </div>
+  </main>
+</div>
+</div> -->

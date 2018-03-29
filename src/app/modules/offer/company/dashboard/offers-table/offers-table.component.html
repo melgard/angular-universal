@@ -1,0 +1,61 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div class="table-list">
+  <div class="table with-options select">
+    <ul class="title">
+      <li><p>Fecha</p></li>
+      <li class="large"><p>Título</p></li>
+      <li class="large"><p>Descripción</p></li>
+      <li><p>Nivel</p></li>
+      <li><p>Área</p></li>
+      <li><p>Postulantes</p></li>
+      <li><p>Recomendados</p></li>
+      <li><p>Estado</p></li>
+      <li><p></p></li>
+    </ul>
+    <ul (click)="selectOffer(offer)" *ngFor="let offer of getOffers()">
+      <li><p>{{offer.date | amLocale:'es' | amDateFormat:'DD/MM/YYYY'}}</p></li>
+      <li class="large"><p>{{offer?.title}} </p> <span *ngIf="offer.paused">(PAUSADA)</span></li>
+      <li class="large"><p>{{ (offer?.body?.length>80)? (offer.body | slice:0:80)+'...':(offer.body) }}</p></li>
+      <li><p>{{offer?.hierarchyLevel}}</p></li>
+      <li><p>{{offer?.location}}</p></li>
+      <li><p>{{offer?.applies?.length}}</p></li>
+      <li><p>{{offer?.recomendedUsers?.length}}</p></li>
+      <li><p>{{offer.getStatus()}}</p></li>
+      <li>
+        <span class="options">
+          <span class="ion-gear-b" (click)="$event.stopPropagation();" [outsideClick]="true" placement="top"
+                [popover]="popOver">
+            <template #popOver>
+              <div class="row">
+                <div class="col-xs-12">
+                  <button (click)="$event.stopPropagation();pauseOffer(offer)" *ngIf="!offer.paused" type="button"
+                          class="btn btn-default btn-outline no-border" aria-label="Left Align">
+                    <span class="glyphicon glyphicon glyphicon-pause" aria-hidden="true"></span> Pausar
+                  </button>
+                  <button *ngIf="offer.paused" (click)="$event.stopPropagation();resumeOffer(offer)" type="button"
+                          class="btn btn-default btn-outline no-border" aria-label="Left Align">
+                    <span class="glyphicon glyphicon glyphicon-pause" aria-hidden="true"></span> Reactivar
+                  </button>
+                  <button type="button" class="btn btn-default btn-outline no-border"
+                          (click)="$event.stopPropagation();deleteOffer(offer)" aria-label="Left Align">
+                    <span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar
+                  </button>
+                   <a class="btn btn-default btn-outline no-border"
+                      [routerLink]="['/offer','company-dashboard-detail',groupId ,offer.id, 'testmatch','uZVTLBCWcw33RIhvnbxTKxTxM2rKJ7YJrwyUXhXn']">
+                    TestMatch
+                </a>
+                </div>
+              </div>
+            </template>
+          </span>
+        </span>
+      </li>
+    </ul>
+    <ul *ngIf="getOffers().length == 0">
+      No se encontraron resultados
+    </ul>
+
+  </div>
+</div>
+
+

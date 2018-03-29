@@ -1,0 +1,31 @@
+<article class="">
+  <div class="row">
+    <div class="col-md-2"><img [src]="perfil?.image_url || noImage" class="img-circle img-responsive"></div>
+    <div class="col-md-8">
+      <h3>
+        {{perfil?.full_name}}
+      </h3>
+      <div class="info">
+        <p>
+          <strong>Edad:</strong>
+          {{perfil?.age}}
+        </p>
+        <p>
+          <strong>Trabaja en:</strong>
+          {{perfil?.current_work}}
+        </p>
+        <p>
+          <strong>Perfil:</strong>
+          {{perfil?.current_profile}}
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-2 cv">
+      <div class="text-center">
+        <span class="fa fa-file-text-o"></span>
+        <p>Descargar CV</p>
+      </div>
+    </div>
+  </div>
+</article>

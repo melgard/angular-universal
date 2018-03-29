@@ -1,0 +1,31 @@
+<aside class="col-md-4 margin-top-30">
+  <div class="well">
+    <img [src]="summary.logoUrl || noImage" class="img-responsive">
+    <hr>
+    <p><strong>Fecha de publicación:</strong> {{ summary.createdAt }}</p>
+    <p><strong>Zona de trabajo:</strong> {{ summary.location }}</p>
+    <p><strong>Posición:</strong> {{ summary.position }}</p>
+    <p><strong>Empresa:</strong> {{ summary.company }}</p>
+    <hr>
+    <button (click)="onApply()" [disabled]="summary.alreadyApplied || sendingApply" class="btn btn-block btn-primary">{{
+      applyText }}
+    </button>
+    <div class="row margin-top-15">
+      <div class="col-xs-12">
+        <h5>Compartir en redes sociales</h5>
+        <ul class="social">
+          <li><a href=""><span class="ion-social-facebook"></span></a></li>
+          <li><a href=""><span class="ion-social-twitter"></span></a></li>
+          <li><a href=""><span class="ion-social-linkedin"></span></a></li>
+          <li><a href=""><span class="ion-social-googleplus"></span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row margin-top-15">
+      <div class="col-xs-12">
+        <a href="" class="btn btn-default btn-block enviar"><span class="ion-email"></span> Enviar a un amigo</a>
+      </div>
+    </div>
+  </div>
+</aside>

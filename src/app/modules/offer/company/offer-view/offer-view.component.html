@@ -1,0 +1,170 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div class="main-container" id="new-offer" *ngIf="ready">
+  <div class="container">
+    <div class="row margintop20">
+      <div class="col-lg-12">
+
+        <div class="well">
+          <form [formGroup]="offerForm" class="form-horizontal" name="frmAltaAviso">
+
+            <legend>
+              <ng-content select=".form-title"></ng-content>
+            </legend>
+
+            <div class="form-group">
+              <label for="titulo" class="col-sm-3 control-label">Título</label>
+              <div class="col-sm-6">
+                <input formControlName="title" type="text" id="titulo" class="form-control" name="titulo" value=""/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cuerpo" class="col-sm-3 control-label">Descipción</label>
+              <div class="col-sm-6">
+                <textarea formControlName="body" id="cuerpo" name="descripción" class="form-control"
+                          rows="5"></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Zona</label>
+              <div class="col-sm-6 autocomplete-location" [class.invalid-field]="currentLocation"
+                   (keydown.backspace)="onDeleteAutocompleteInput()">
+                <ng4geo-autocomplete [userSettings]="autocompleteSettings"
+                                     (componentCallback)="onLocationSelect($event)"></ng4geo-autocomplete>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contractKind" class="col-sm-3 control-label">Tipo de puesto</label>
+              <div class="col-sm-6">
+                <select formControlName="contractKind" class="form-control" id="contractKind" name="contractKind">
+                  <option disabled selected value="">--seleccionar--</option>
+                  <option [value]="contractKind.id" *ngFor="let contractKind of contractKinds">{{contractKind.value}}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="hierarchyLevel" class="col-sm-3 control-label">Tipo de Liderazgo</label>
+              <div class="col-sm-6">
+                <select formControlName="hierarchyLevel" class="form-control" id="hierarchyLevel" name="hierarchyLevel">
+                  <option disabled selected value="">--seleccionar--</option>
+                  <option [value]="hierarchy.id" *ngFor="let hierarchy of hierarchySub | async">
+                    {{hierarchy.description}}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="cluster">Área</label>
+              <div class="col-sm-6">
+                <select formControlName="cluster" class="form-control" id="cluster" name="cluster">
+                  <option disabled selected value="">--seleccionar--</option>
+                  <option [value]="cluster.id" *ngFor="let cluster of clusters">{{cluster.description}}</option>
+                </select>
+                <div formArrayName="careers" *ngFor="let career of careers, let i = index">
+                  <input type="checkbox" [formControlName]="i"/> {{ career.description }}
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <hr>
+            </div>
+            <div class="form-group">
+              <label for="cuerpo" class="col-sm-3 control-label">Rango salarial</label>
+              <div class="col-sm-6">
+                <input formControlName="salary" type="text" id="titulo" class="form-control" name="salary" value=""/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cuerpo" class="col-sm-3 control-label">Beneficios</label>
+              <div class="col-sm-6">
+                <div *ngFor="let perk of companyPerks">
+                  {{perk.id}}
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-offset-3 col-sm-6">
+                <input formControlName="hiddenData" type="checkbox" id="hiddenData" name="hiddenData" value="" checked/>
+                Mostrar datos de la empresa
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-offset-3 col-sm-6">
+                <input formControlName="allowComments" type="checkbox" id="allowComments" name="allowComments" value=""
+                       checked/> Permitir comentarios en el anuncio
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="well tipo-anuncios">
+                  <h5>Tipo de anuncio</h5>
+
+                  <ul>
+                    <li class="radio">
+                      <input class="radio" type="radio">
+                      <strong class="text-uppercase">Gratuito</strong>
+                      <p>El aviso será publicado en nuestra plataforma y estará en los resultados de búsqueda para todos
+                        los
+                        usuarios</p>
+                    </li>
+
+                    <li class="radio">
+                      <input class="radio" type="radio">
+                      <strong class="text-uppercase">Exposición extra (100 créditos)</strong>
+                      <p>El aviso será publicado en nuestra plataforma, aparecerá en los primeros puestos en resultados
+                        de búsquedas</p>
+                    </li>
+
+                    <li class="radio">
+                      <input class="radio" type="radio">
+                      <strong class="text-uppercase">Exposición máxima (200 créditos)</strong>
+                      <p>El aviso será publicado en nuestra plataforma, aparecerá en los primeros puestos en resultados
+                        de búsquedas
+                        y llegará a potenciales candidatos a través de su red social</p>
+                    </li>
+                  </ul>
+
+                  <div class="row comprar-creditos">
+                    <div class="col-md-6 text-center">
+                      <h4>Créditos disponibles</h4>
+                      <h2>2500</h2>
+                    </div>
+
+                    <div class="col-md-6 text-center">
+                      <a class="btn btn-default btn-lg" target="_blank" href="comprar-creditos.html">Comprar
+                        créditos</a>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-offset-3 col-sm-6">
+                <a class="btn btn-primary btn-lg" (click)="refineFiltersRedirect()">Continuar</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

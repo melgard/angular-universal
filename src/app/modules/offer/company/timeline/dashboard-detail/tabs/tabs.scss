@@ -1,0 +1,111 @@
+
+ul li {
+  list-style-type: decimal;
+}
+
+ul li:hover {
+  background-color: rgba(169, 169, 169, 0.14);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+ul li.drag-item {
+  padding-left: 15px;
+}
+
+.array-pruebas {
+  padding-left: 15px;
+}
+
+.listado-postulantes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+
+  app-profile-card {
+    margin-bottom: 10px;
+    padding: 10px;
+    min-width: 280px;
+  }
+}
+
+.timeline {
+  padding: 0;
+  display: flex;
+  list-style: none;
+  li {
+    flex: 1;
+    text-align: center;
+    ul {
+      padding: 0;
+      list-style: none;
+      li {
+        margin: 10px 0;
+        position: relative;
+        height: 40px;
+        img {
+          border: 2px solid white;
+        }
+        .postulante {
+          position: absolute;
+          width: 500px;
+          display: flex;
+          opacity: 0;
+          transition: 1s;
+          background: white;
+          z-index: 999;
+          transform: translateX(-50%) translatey(100%);
+          margin-left: 50%;
+          bottom: 0;
+          border: 1px solid #ddd;
+
+          &:before {
+            width: 15px;
+            height: 15px;
+            content: "";
+            display: inline-block;
+            transform: rotate(45deg) translateX(-50%);
+            top: -2px;
+            z-index: 999;
+            background: white;
+            border-top: 1px solid #cdcdcd;
+            border-left: 1px solid #cdcdcd;
+            position: absolute;
+          }
+
+          .historia, .tile-postulante {
+            width: 50%;
+            border: none;
+            box-sizing: border-box;
+            float: left;
+            height: 100%;
+          }
+
+          .tile-postulante {
+            border-right: 1px solid #cdcdcd;
+          }
+
+          .historia {
+            text-align: left;
+            padding: 15px;
+            font-size: 12px;
+            .historial {
+              li {
+                text-align: left;
+                height: auto;
+              }
+            }
+          }
+        }
+        &:hover {
+          .postulante {
+            display: block;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+  }
+}
+
