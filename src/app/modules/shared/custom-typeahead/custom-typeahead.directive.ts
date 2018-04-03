@@ -56,10 +56,5 @@ export class CustomTypeaheadDirective extends TypeaheadDirective {
     );
   }
 
-  @HostListener('keydown', ['$event']) onSubmitAction(e) {
-    // enter
-    if (e.keyCode === 13 && e.target.value) {
-      this.onSubmit.emit(e.target.value);
-    }
-  }
+
 }

@@ -1,6 +1,6 @@
 import {Component, ElementRef, EventEmitter, OnInit, Output} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {TimelineService} from '../../../../../../../services/index.services';
+import {TimelineService} from '@app/services/index.services';
 import {IPhase} from '../../../../interfaces/phase.interface';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {PhaseComunModalComponent} from '../../modals/phase-comun-modal/phase-comun-modal.component';
@@ -9,7 +9,7 @@ import {IHistorical} from '../../../../interfaces/historical.interface';
 import {FirstPhaseModalComponent} from '../../modals/first-phase-modal/first-phase-modal.component';
 import {SecondPhaseModalComponent} from '../../modals/second-phase-modal/second-phase-modal.component';
 import {PruebasModalComponent} from '../../modals/pruebas-modal/pruebas-modal.component';
-import {AppConfig} from '../../../../../../../app-config';
+import {AppConfig} from '@app/app-config';
 import {Subscription} from 'rxjs/Subscription';
 import {IPrueba} from '../../../../interfaces/pruebas.interface';
 import {ReactivationModalComponent} from '../../modals/reactivation-modal/reactivation-modal.component';
@@ -33,8 +33,7 @@ export class TabTimelineComponent implements OnInit {
   public noImage = AppConfig.USER_NO_IMAGE;
   public modalRef: BsModalRef;
 
-  constructor(private el: ElementRef,
-              private timelineService: TimelineService,
+  constructor(private timelineService: TimelineService,
               private modalService: BsModalService) {
   }
 

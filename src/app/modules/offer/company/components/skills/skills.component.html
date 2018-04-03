@@ -1,11 +1,15 @@
 <section class="pregunta" id="datos-laborales">
   <h5>{{title}}</h5>
   <div class="input-group">
-    <input id="typeahead-format" type="text" class="form-control" name="model" #chipContent [(ngModel)]="text"
+    <!-- TODO: CAMBIO -->
+    <!-- <input id="typeahead-format" type="text" class="form-control" name="model" #chipContent [(ngModel)]="text"
            [ngbTypeahead]="search"
            typeahead-editable="false" placeholder="Escribe Tus Habilidades"
+           (selectItem)="$event.preventDefault(); addChip($event.item)"/> -->
+    <input id="typeahead-format" type="text" class="form-control" name="model"
+           #chipContent [(ngModel)]="text"
+           placeholder="Escribe Tus Habilidades"
            (selectItem)="$event.preventDefault(); addChip($event.item)"/>
-
     <span class="input-group-btn">
       <button class="btn btn-primary" type="button" (click)="addChip(chipContent.value)"
               [disabled]="isButtonDisabled()">Agregar</button>

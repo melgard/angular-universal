@@ -19,8 +19,10 @@
           <span class="bucador-header-span input-group-addon ion-location"></span>
 
           <div class="autocomplete-location" (keydown.backspace)="onDeleteAutocompleteInput()">
+            <!-- TODO Cambio
             <ng4geo-autocomplete [userSettings]="autocompleteSettings"
                                  (componentCallback)="onLocationSelect($event)"></ng4geo-autocomplete>
+                                 -->
           </div>
           <!--<input [(ngModel)]="searchLocationInput" type="text" class="form-control input-lg" placeholder="ciudad o provincia" aria-label="ciudad o provincia">-->
           <input (click)="onSearch()" type="submit" value="buscar" class="btn btn-primary">

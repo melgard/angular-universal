@@ -1,9 +1,9 @@
 import {AfterContentInit, Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {TimelineService} from '../../../../../services/index.services';
+import {TimelineService} from '@app/services/index.services';
 import {IComment} from '../../interfaces/comment.interface';
 import {IPhase} from '../../interfaces/phase.interface';
-import {AppConfig} from '../../../../../app-config';
+import {AppConfig} from '@app/app-config';
 import swal from 'sweetalert';
 import {ToastrService} from 'ngx-toastr';
 

@@ -1,4 +1,4 @@
-<ngx-loading [show]="loading"></ngx-loading>
+<!-- <ngx-loading [show]="loading"></ngx-loading> -->
 <div class="table-list">
   <div class="table with-options select">
     <ul class="title">
@@ -23,8 +23,10 @@
       <li><p>{{offer.getStatus()}}</p></li>
       <li>
         <span class="options">
+          <!-- TODO Cambio
           <span class="ion-gear-b" (click)="$event.stopPropagation();" [outsideClick]="true" placement="top"
-                [popover]="popOver">
+                [popover]="popOver"> -->
+          <span class="ion-gear-b">
             <template #popOver>
               <div class="row">
                 <div class="col-xs-12">

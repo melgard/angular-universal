@@ -88,13 +88,15 @@ import {PostulantesPipe} from './company/timeline/test-match/pipes/postulantes.p
   imports: [
     CommonModule,
     OfferRoutingModule,
-    PopoverModule.forRoot(),
-    DragulaModule,
     FormsModule,
     ReactiveFormsModule,
     MomentModule,
     SharedModule,
     ReactiveFormsModule,
+    /*
+    PopoverModule.forRoot(),
+    DragulaModule,
+
     Ng4GeoautocompleteModule.forRoot(),
     LoadingModule.forRoot({
       animationType: ANIMATION_TYPES.wanderingCubes,
@@ -111,8 +113,7 @@ import {PostulantesPipe} from './company/timeline/test-match/pipes/postulantes.p
     TypeaheadModule.forRoot(),
     CollapseModule.forRoot(),
     ChartsModule,
-    NgbModule.forRoot()
-
+    NgbModule.forRoot() */
   ],
   entryComponents: [
     PostulantInfoModalComponent,
@@ -182,7 +183,7 @@ import {PostulantesPipe} from './company/timeline/test-match/pipes/postulantes.p
     PostulantesPipe
   ],
   providers: [
-    ContractKindService,
+    /*ContractKindService,
     HierarchyService,
     AreaService,
     ApiService,
@@ -191,7 +192,7 @@ import {PostulantesPipe} from './company/timeline/test-match/pipes/postulantes.p
     PostulantInfoModalService,
     NewPhaseModalService,
     MyAppliesService,
-    OfferCreateService
+    OfferCreateService*/
   ]
 })
 export class OfferModule {

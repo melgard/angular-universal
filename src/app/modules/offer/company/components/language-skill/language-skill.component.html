@@ -1,9 +1,14 @@
 <article class="pregunta">
   <h5>¿Se necesita conocimientos de algún idioma para el puesto? ¿Cuáles?</h5>
+  <!-- TODO: CAMBIO
   <input id="typeahead-format" type="text" class="form-control" name="model" #chipContent [(ngModel)]="text"
          [ngbTypeahead]="search"
          typeahead-editable="false" placeholder="Escribe Tus Habilidades"
-         (selectItem)="$event.preventDefault(); addChip($event.item)"/>
+         (selectItem)="$event.preventDefault(); addChip($event.item)"/>-->
+  <input id="typeahead-format" type="text" class="form-control" name="model"
+         #chipContent [(ngModel)]="text"
+         placeholder="Escribe Tus Habilidades"
+                                                                              (selectItem)="$event.preventDefault(); addChip($event.item)"/>
   <div>
     <div class="table-list">
       <ul class="table">
